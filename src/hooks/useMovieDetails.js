@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { addMainVideoDetails } from "../store/movieSlice";
 
-const useMovieDetails = ({ movieId }) => {
+const useMovieDetails = (action,movieId) => {
 
   const dispatch = useDispatch();
 
   const getMovieLogo = async () => {
     let response = await fetch('https://api.themoviedb.org/3/movie/'+movieId+'/images',API_OPTIONS)
-    let responseJson = await response.json();
-    let titleLogo = responseJson.logos[0].file_path;
+    let responseJson = await response?.json();
+    let titleLogo = responseJson?.logos[0]?.file_path;
     return titleLogo;
   }
 
@@ -19,7 +18,7 @@ const useMovieDetails = ({ movieId }) => {
       "https://api.themoviedb.org/3/movie/" + movieId,
       API_OPTIONS
     );
-    let responseJson = await response.json();
+    let responseJson = await response?.json();
     setMovieDetails(responseJson);
   };
 
@@ -30,7 +29,7 @@ const useMovieDetails = ({ movieId }) => {
   };
 
   const setMovieDetails = async (responseJson) => {
-    const { title, overview, genres, runtime, adult,release_date } = responseJson;
+    const { title, overview, genres, runtime, adult,release_date,backdrop_path} = responseJson;
     const genre = genres.reduce((acc, genre) => {
       acc.push(genre.name);
       return acc;
@@ -39,15 +38,17 @@ const useMovieDetails = ({ movieId }) => {
     const releaseYear = release_date.split("-")[0] 
     const titleLogo = await getMovieLogo(); 
     dispatch(
-      addMainVideoDetails({
+      action({
         title: title,
         logo:titleLogo,
         overview: overview,
         genres: genre,
         runtime: playTime,
         adult: adult,
-        releaseYear: releaseYear
+        releaseYear: releaseYear,
+        backdrop_path: backdrop_path
       })
+      
     );
   };
 

@@ -8,7 +8,11 @@ import {
   tvOutline,
 } from "ionicons/icons";
 
+import { useNavigate } from "react-router-dom";
+
 const SideBar = () => {
+
+  const navigate = useNavigate();
   return (
     <div className="absolute h-full w-[100%] z-10">
       <div className="fixed w-28 h-screen text-white hover:cursor-pointer">
@@ -21,7 +25,7 @@ const SideBar = () => {
         <div className="items-center flex flex-col justify-evenly h-2/4">
           <IonIcon className="w-6 h-6" icon={peopleOutline} />
           <IonIcon className="w-6 h-6" icon={searchOutline} />
-          <IonIcon className="w-6 h-6" icon={homeOutline} />
+          <IonIcon className="w-6 h-6" icon={homeOutline}  onClick={() => {navigate("/")}}/>
           <IonIcon className="w-6 h-6" icon={filmOutline} />
           <IonIcon className="w-6 h-6" icon={tvOutline} />
         </div>

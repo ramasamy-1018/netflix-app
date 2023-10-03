@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addAllVideos, addMainVideoTrailer } from "../store/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
 
-const useGetTrailer = (movieId) => {
+const useGetTrailer = (action,movieId) => {
   const dispatch = useDispatch();
 
   const getTrailer = async () => {
@@ -11,8 +11,8 @@ const useGetTrailer = (movieId) => {
       "https://api.themoviedb.org/3/movie/" + movieId + "/videos",
       API_OPTIONS
     );
-    let responseJson = await response.json();
-    dispatch(addAllVideos(responseJson.results));
+    let responseJson = await response?.json();
+    dispatch(addAllVideos(responseJson?.results));
     setTrailer(responseJson)
   };
 
@@ -20,8 +20,8 @@ const useGetTrailer = (movieId) => {
     let trailerVideo = responseJson.results?.filter(
       (video) => video.type == "Trailer" && video.name == "Official Trailer"
     );
-    trailerVideo = !trailerVideo[0]?.key? responseJson?.results[0].key: trailerVideo[0].key;
-    dispatch(addMainVideoTrailer(trailerVideo));
+    trailerVideo = !trailerVideo[0]?.key ? responseJson?.results[0]?.key : trailerVideo[0]?.key;
+    dispatch(action(trailerVideo));
   };
 
   useEffect(() => {

@@ -10,6 +10,13 @@ const movieSlice = createSlice({
     allVideos: null,
     mainVideoTrailer: null,
     mainVideoDetails: null,
+    secondaryVideoTrailer: null,
+    secondaryVideoDetails: null,
+    tamilMovies: null,
+    teluguMovies: null,
+    hindiMovies: null,
+    malayalamMovies: null,
+    kannadaMovies: null,
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -28,6 +35,26 @@ const movieSlice = createSlice({
       state.upcomingMovies = action.payload;
     },
 
+    addTamilMovies: (state, action) => {
+      state.tamilMovies = action.payload;
+    },
+
+    addTeluguMovies: (state, action) => {
+      state.teluguMovies = action.payload;
+    },
+
+    addMalayalamMovies: (state, action) => {
+      state.malayalamMovies = action.payload;
+    },
+
+    addHindiMovies: (state, action) => {
+      state.hindiMovies = action.payload;
+    },
+
+    addKannadaMovies: (state, action) => {
+      state.kannadaMovies = action.payload;
+    },
+
     addAllVideos: (state, action) => {
       state.allVideos = action.payload;
     },
@@ -38,6 +65,22 @@ const movieSlice = createSlice({
 
     addMainVideoDetails: (state, action) => {
       state.mainVideoDetails = action.payload;
+    },
+
+    addSecondaryVideoTrailer: (state, action) => {
+      state.secondaryVideoTrailer = action.payload;
+    },
+
+    addSecondaryVideoDetails: (state, action) => {
+      state.secondaryVideoDetails = action.payload;
+    },
+
+    removeSecondaryVideoTrailer: (state, action) => {
+      state.secondaryVideoTrailer = null;
+    },
+
+    removeSecondaryVideoDetails: (state, action) => {
+      state.secondaryVideoDetails = null;
     },
   },
 });
@@ -50,5 +93,14 @@ export const {
   addMainVideoTrailer,
   addAllVideos,
   addMainVideoDetails,
+  addHindiMovies,
+  addKannadaMovies,
+  addTamilMovies,
+  addTeluguMovies,
+  addMalayalamMovies,
+  addSecondaryVideoTrailer,
+  addSecondaryVideoDetails,
+  removeSecondaryVideoTrailer,
+  removeSecondaryVideoDetails,  
 } = movieSlice.actions;
 export default movieSlice.reducer;

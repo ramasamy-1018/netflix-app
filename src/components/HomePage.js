@@ -1,16 +1,30 @@
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
-import usePopularMovies from "../hooks/usePopularMovies";
-import useTopRatedMovies from "../hooks/useTopRatedMovies";
-import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import useFilterMovieByLanguage from "../hooks/useFilterMovieByLanguage";
+import useFilterMovieByCategory from "../hooks/useFilterMoviesByCategory";
+import {
+  addHindiMovies,
+  addKannadaMovies,
+  addMalayalamMovies,
+  addNowPlayingMovies,
+  addPopularMovies,
+  addTamilMovies,
+  addTeluguMovies,
+  addTopRatedMovies,
+  addUpcomingMovies,
+} from "../store/movieSlice";
 import SecondaryContainer from "./SecondaryContainer";
 import SideBar from "./SideBar";
 import VideoContainer from "./VideoContainer";
 
 const HomePage = () => {
-  useNowPlayingMovies();
-  usePopularMovies();
-  useTopRatedMovies();
-  useUpcomingMovies();
+  useFilterMovieByCategory(addNowPlayingMovies, "now_playing");
+  useFilterMovieByCategory(addPopularMovies, "popular");
+  useFilterMovieByCategory(addTopRatedMovies, "top_rated");
+  useFilterMovieByCategory(addUpcomingMovies, "upcoming");
+  useFilterMovieByLanguage(addTamilMovies, "ta");
+  useFilterMovieByLanguage(addTeluguMovies, "te");
+  useFilterMovieByLanguage(addHindiMovies, "hi");
+  useFilterMovieByLanguage(addMalayalamMovies, "ml");
+  useFilterMovieByLanguage(addKannadaMovies, "ka");
 
   return (
     <div>

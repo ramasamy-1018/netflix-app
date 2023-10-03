@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux"
 import VideoTrailer from "./VideoTrailer";
 import VideoTitle from "./VideoTitle";
+import { addMainVideoDetails, addMainVideoTrailer } from "../store/movieSlice";
 
 const VideoContainer = () => {
     
@@ -9,8 +10,8 @@ const VideoContainer = () => {
 
     return(
         <div >
-            <VideoTrailer movieId = {nowPlayingMovies[2]?.id} />
-            <VideoTitle movieId = {nowPlayingMovies[2]?.id} />
+            <VideoTrailer message={"MainVideo"} action = {addMainVideoTrailer} movieId = {nowPlayingMovies[2]?.id} />
+            <VideoTitle message={"MainVideo"} action = {addMainVideoDetails} movieId = {nowPlayingMovies[2]?.id} />
         </div>
     )
 }

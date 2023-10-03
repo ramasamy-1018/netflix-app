@@ -10,7 +10,7 @@ const MovieListContainer = ({ title, movies }) => {
       <div className="my-5 flex overflow-y-scroll no-scrollbar">
         <div className="flex flex-row-reverse">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} poster={movie.poster_path} />
+            <MovieCard key={movie.id} movieId={movie.id} poster={movie.poster_path} />
           ))}
         </div>
       </div>
