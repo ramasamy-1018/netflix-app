@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+  }
+}
+
+@keyframes scaleAnimation {
+    0% {
+      transform: scale(0.8) translateX(20%); /* Initial scale up */
+    }
+    80% {
+      transform: scale(0.8) translateX(20%); /* Hold the scale for 50% of the animation duration (5 seconds) */
+    }
+    100% {
+      transform: scale(0.7); /* Final scale down */
+    }
+  }
+  
+  .animated-scale {
+    animation: scaleAnimation 8s; /* Animation lasts 10 seconds */
+    animation-fill-mode: forwards; /* Keep the final state after animation */
+  }

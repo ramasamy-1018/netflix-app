@@ -1,9 +1,15 @@
+import AppRoutes from "./components/AppRoutes";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 
 function App() {
+
   return (
-    <div className="App">
-      <h1 className ="text-green-950 font-serif text-xl p-10">Hello World!!!</h1>
+    <div>
+      <Provider store={appStore}>
+        <AppRoutes />
+      </Provider>
     </div>
   );
 }
