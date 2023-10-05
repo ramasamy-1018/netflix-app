@@ -1,26 +1,26 @@
 import React from "react";
-import useMovieDetails from "../hooks/useMovieDetails";
+import useMovieDetails from "../../hooks/useMovieDetails";
 import { useSelector } from "react-redux";
-import { IMAGE_CDN_URL } from "../utils/constants";
+import { IMAGE_CDN_URL } from "../../utils/constants";
 import { IonIcon } from "@ionic/react";
 import { add, play } from "ionicons/icons";
 
-const VideoTitle = ({ message, action, movieId }) => {
-  useMovieDetails(action, movieId);
+const MovieTitle = ({ message, action, movieId }) => {
+  useMovieDetails("movie",action,movieId);
 
-  const mainVideoDetails = useSelector(
-    (store) => store.movies.mainVideoDetails
+  const mainMovieVideoDetails = useSelector(
+    (store) => store.movies.mainMovieVideoDetails
   );
 
-  const secondaryVideoDetails = useSelector(
-    (store) => store.movies.secondaryVideoDetails
+  const secondaryMovieVideoDetails = useSelector(
+    (store) => store.movies.secondaryMovieVideoDetails
   );
 
-  if (message == "MainVideo" && !mainVideoDetails) return null;
-  if (message == "SecondaryVideo" && !secondaryVideoDetails) return null;
+  if (message == "MainVideo" && !mainMovieVideoDetails) return null;
+  if (message == "SecondaryVideo" && !secondaryMovieVideoDetails) return null;
 
   const showTitle =
-    message == "MainVideo" ? mainVideoDetails : secondaryVideoDetails;
+    message == "MainVideo" ? mainMovieVideoDetails : secondaryMovieVideoDetails;
 
   return (
     <div className="absolute w-[100%] text-white flex flex-col bg-gradient-to-r from-black bg-opacity-60 justify-center">
@@ -55,4 +55,4 @@ const VideoTitle = ({ message, action, movieId }) => {
   );
 };
 
-export default VideoTitle;
+export default MovieTitle;

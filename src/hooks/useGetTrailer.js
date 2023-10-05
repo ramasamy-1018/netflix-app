@@ -1,18 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addAllVideos, addMainVideoTrailer } from "../store/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
 
-const useGetTrailer = (action,movieId) => {
+const useGetTrailer = (stream,action,id) => {
   const dispatch = useDispatch();
 
   const getTrailer = async () => {
     let response = await fetch(
-      "https://api.themoviedb.org/3/movie/" + movieId + "/videos",
+      "https://api.themoviedb.org/3/"+stream+"/" + id + "/videos",
       API_OPTIONS
     );
     let responseJson = await response?.json();
-    dispatch(addAllVideos(responseJson?.results));
     setTrailer(responseJson)
   };
 

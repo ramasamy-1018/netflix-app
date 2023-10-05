@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import {
   peopleOutline,
@@ -16,7 +16,13 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const SideBar = ({ showMovies, ShowTv }) => {
+  const [selectedIcon, setSelectedIcon] = useState(null);
   const navigate = useNavigate();
+
+  const handleIconClick = (icon) => {
+    setSelectedIcon(icon);
+  }
+
 
   const handleMouseEnter = (event, sharpIcon) => {
     event.currentTarget
@@ -33,9 +39,9 @@ const SideBar = ({ showMovies, ShowTv }) => {
   return (
     <div className="absolute z-10">
       <div className="fixed w-28 h-screen text-white text-sm font-light pl-4">
-        <div className="h-1/4 flex flex-col">
+        <div className="h-1/4 flex flex-col ">
           <img
-            className="w-36 h-20 pt-3"
+            className="w-44 h-20 pt-3 scale-110"
             src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
           />
         </div>
@@ -45,7 +51,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
             onMouseEnter={(e) => handleMouseEnter(e, peopleSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, peopleOutline)}
           >
-            <IonIcon className="w-6 h-6 hover:scale-150" icon={peopleOutline} />
+            <IonIcon className="w-6 h-6 hover:scale-150" icon={peopleOutline}/>
             <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
               Profile
             </p>
@@ -80,6 +86,8 @@ const SideBar = ({ showMovies, ShowTv }) => {
               className="flex flex-col items-center group"
               onMouseEnter={(e) => handleMouseEnter(e, tvSharp)}
               onMouseLeave={(e) => handleMouseLeave(e, tvOutline)}
+              onClick={() => navigate("/tvshow")}
+
             >
               <IonIcon className="w-6 h-6 hover:scale-150" icon={tvOutline} />
               <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">

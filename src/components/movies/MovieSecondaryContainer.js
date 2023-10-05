@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import MovieListContainer from './MovieListContainer';
 
-const SecondaryContainer = () => {
+const MovieSecondaryContainer = () => {
 
   const movies = useSelector((store) => store.movies);
 
@@ -25,4 +25,4 @@ const SecondaryContainer = () => {
   )
 }
 
-export default SecondaryContainer
+export default MovieSecondaryContainer

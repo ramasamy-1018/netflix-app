@@ -1,15 +1,26 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./HomePage";
-import SelectedMovie from "./SelectedMovie";
+
+import ShowAllMovies from "./movies/ShowAllMovies"
+import SelectedMovie from "./movies/SelectedMovie";
+import ShowAllTvShows from "./tv/ShowAllTvShows"
+import SelectedTvShow from "./tv/SelectedTvShow";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <ShowAllMovies/>,
   },
   {
     path: "/movie/:param",
     element: <SelectedMovie />,
+  },
+  {
+    path: "/tvshow",
+    element: <ShowAllTvShows />,
+  },
+  {
+    path: "/tvshow/:param",
+    element: <SelectedTvShow />,
   }
 ]);
 

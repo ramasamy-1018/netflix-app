@@ -21,7 +21,7 @@
     0% {
       transform: scale(0.8) translateX(20%); /* Initial scale up */
     }
-    80% {
+    50% {
       transform: scale(0.8) translateX(20%); /* Hold the scale for 50% of the animation duration (5 seconds) */
     }
     100% {
@@ -30,23 +30,8 @@
   }
   
   .animated-scale {
-    animation: scaleAnimation 8s; /* Animation lasts 10 seconds */
+    animation: scaleAnimation 5s; /* Animation lasts 10 seconds */
     animation-fill-mode: forwards; /* Keep the final state after animation */
   }
 
-  .shimmer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 20%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.4) 80%, rgba(255,255,255,0) 100%);
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
+ 

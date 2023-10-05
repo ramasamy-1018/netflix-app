@@ -7,16 +7,15 @@ const movieSlice = createSlice({
     popularMovies: null,
     topRatedMovies: null,
     upcomingMovies: null,
-    allVideos: null,
-    mainVideoTrailer: null,
-    mainVideoDetails: null,
-    secondaryVideoTrailer: null,
-    secondaryVideoDetails: null,
     tamilMovies: null,
     teluguMovies: null,
     hindiMovies: null,
     malayalamMovies: null,
     kannadaMovies: null,
+    mainMovieVideoTrailer: null,
+    mainMovieVideoDetails: null,
+    secondaryMovieVideoTrailer: null,
+    secondaryMovieVideoDetails: null,
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -55,32 +54,28 @@ const movieSlice = createSlice({
       state.kannadaMovies = action.payload;
     },
 
-    addAllVideos: (state, action) => {
-      state.allVideos = action.payload;
+    addMainMovieVideoTrailer: (state, action) => {
+      state.mainMovieVideoTrailer = action.payload;
     },
 
-    addMainVideoTrailer: (state, action) => {
-      state.mainVideoTrailer = action.payload;
+    addMainMovieVideoDetails: (state, action) => {
+      state.mainMovieVideoDetails = action.payload;
     },
 
-    addMainVideoDetails: (state, action) => {
-      state.mainVideoDetails = action.payload;
+    addSecondaryMovieVideoTrailer: (state, action) => {
+      state.secondaryMovieVideoTrailer = action.payload;
     },
 
-    addSecondaryVideoTrailer: (state, action) => {
-      state.secondaryVideoTrailer = action.payload;
+    addSecondaryMovieVideoDetails: (state, action) => {
+      state.secondaryMovieVideoDetails = action.payload;
     },
 
-    addSecondaryVideoDetails: (state, action) => {
-      state.secondaryVideoDetails = action.payload;
+    removeSecondaryMovieVideoTrailer: (state, action) => {
+      state.secondaryMovieVideoTrailer = null;
     },
 
-    removeSecondaryVideoTrailer: (state, action) => {
-      state.secondaryVideoTrailer = null;
-    },
-
-    removeSecondaryVideoDetails: (state, action) => {
-      state.secondaryVideoDetails = null;
+    removeSecondaryMovieVideoDetails: (state, action) => {
+      state.secondaryMovieVideoDetails = null;
     },
   },
 });
@@ -90,17 +85,16 @@ export const {
   addPopularMovies,
   addUpcomingMovies,
   addTopRatedMovies,
-  addMainVideoTrailer,
-  addAllVideos,
-  addMainVideoDetails,
   addHindiMovies,
   addKannadaMovies,
   addTamilMovies,
   addTeluguMovies,
   addMalayalamMovies,
-  addSecondaryVideoTrailer,
-  addSecondaryVideoDetails,
-  removeSecondaryVideoTrailer,
-  removeSecondaryVideoDetails,  
+  addMainMovieVideoTrailer,
+  addMainMovieVideoDetails,
+  addSecondaryMovieVideoTrailer,
+  addSecondaryMovieVideoDetails,
+  removeSecondaryMovieVideoTrailer,
+  removeSecondaryMovieVideoDetails,  
 } = movieSlice.actions;
 export default movieSlice.reducer;
