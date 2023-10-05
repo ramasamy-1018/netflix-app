@@ -9,8 +9,8 @@ const SecondaryContainer = () => {
   if(!movies) return null
   
   return (
-    <div className='absolute overflow-hidden top-full w-screen text-white'>
-    <div className='pl-32 pt-1.5 bg-black'>
+    <div className='absolute overflow-hidden top-full w-[100%] text-white'>
+    <div className='pl-[9%] pt-1 bg-black'>
         <MovieListContainer title={"Now Playing"} movies = {movies.nowPlayingMovies} />
         <MovieListContainer title={"Popular"} movies = {movies.popularMovies} />
         <MovieListContainer title={"Top Rated"} movies = {movies.topRatedMovies} />

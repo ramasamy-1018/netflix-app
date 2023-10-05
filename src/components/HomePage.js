@@ -28,7 +28,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <SideBar />
+      <SideBar showMovies={false} ShowTv={true}/>
       <VideoContainer />
       <SecondaryContainer />
     </div>

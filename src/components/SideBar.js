@@ -1,33 +1,102 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IonIcon } from "@ionic/react";
 import {
   peopleOutline,
   searchOutline,
-  homeOutline,
   filmOutline,
   tvOutline,
+  albumsOutline,
+  peopleSharp,
+  searchSharp,
+  filmSharp,
+  tvSharp,
+  albumsSharp,
 } from "ionicons/icons";
 
 import { useNavigate } from "react-router-dom";
 
-const SideBar = () => {
-
+const SideBar = ({ showMovies, ShowTv }) => {
   const navigate = useNavigate();
+
+  const handleMouseEnter = (event, sharpIcon) => {
+    event.currentTarget
+      .querySelector("ion-icon")
+      .setAttribute("icon", sharpIcon);
+  };
+
+  const handleMouseLeave = (event, outlineIcon) => {
+    event.currentTarget
+      .querySelector("ion-icon")
+      .setAttribute("icon", outlineIcon);
+  };
+
   return (
-    <div className="absolute h-full w-[100%] z-10">
-      <div className="fixed w-28 h-screen text-white hover:cursor-pointer">
-        <div className="w-28 h-1/4 flex flex-col pt-2 items-center">
-        <img
-          className="w-32 h-20"
-          src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
-        />
+    <div className="absolute z-10">
+      <div className="fixed w-28 h-screen text-white text-sm font-light pl-4">
+        <div className="h-1/4 flex flex-col">
+          <img
+            className="w-36 h-20 pt-3"
+            src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
+          />
         </div>
-        <div className="items-center flex flex-col justify-evenly h-2/4">
-          <IonIcon className="w-6 h-6" icon={peopleOutline} />
-          <IonIcon className="w-6 h-6" icon={searchOutline} />
-          <IonIcon className="w-6 h-6" icon={homeOutline}  onClick={() => {navigate("/")}}/>
-          <IonIcon className="w-6 h-6" icon={filmOutline} />
-          <IonIcon className="w-6 h-6" icon={tvOutline} />
+        <div className="h-2/4 flex flex-col items-center justify-evenly mt-5">
+          <div
+            className="flex flex-col items-center group"
+            onMouseEnter={(e) => handleMouseEnter(e, peopleSharp)}
+            onMouseLeave={(e) => handleMouseLeave(e, peopleOutline)}
+          >
+            <IonIcon className="w-6 h-6 hover:scale-150" icon={peopleOutline} />
+            <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+              Profile
+            </p>
+          </div>
+
+          <div
+            className="flex flex-col items-center group"
+            onMouseEnter={(e) => handleMouseEnter(e, searchSharp)}
+            onMouseLeave={(e) => handleMouseLeave(e, searchOutline)}
+          >
+            <IonIcon className="w-6 h-6 hover:scale-150" icon={searchOutline} />
+            <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+              Search
+            </p>
+          </div>
+
+          {showMovies && (
+            <div
+              className="flex flex-col items-center group"
+              onMouseEnter={(e) => handleMouseEnter(e, filmSharp)}
+              onMouseLeave={(e) => handleMouseLeave(e, filmOutline)}
+              onClick={() => navigate("/")}
+            >
+              <IonIcon className="w-6 h-6 hover:scale-150" icon={filmOutline} />
+              <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+                Movies
+              </p>
+            </div>
+          )}
+          {ShowTv && (
+            <div
+              className="flex flex-col items-center group"
+              onMouseEnter={(e) => handleMouseEnter(e, tvSharp)}
+              onMouseLeave={(e) => handleMouseLeave(e, tvOutline)}
+            >
+              <IonIcon className="w-6 h-6 hover:scale-150" icon={tvOutline} />
+              <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+                Tv Shows
+              </p>
+            </div>
+          )}
+          <div
+            className="flex flex-col items-center group"
+            onMouseEnter={(e) => handleMouseEnter(e, albumsSharp)}
+            onMouseLeave={(e) => handleMouseLeave(e, albumsOutline)}
+          >
+            <IonIcon className="w-6 h-6 hover:scale-150" icon={albumsOutline} />
+            <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+              Watchlist
+            </p>
+          </div>
         </div>
       </div>
     </div>

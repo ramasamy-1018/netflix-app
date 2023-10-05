@@ -12,7 +12,7 @@ const SelectedMovie = () => {
 
     return(
         <div >
-            <SideBar />
+            <SideBar showMovies={true} ShowTv={true}/>
             <VideoTrailer message={"SecondaryVideo"} action={addSecondaryVideoTrailer} movieId = {param} />
             <VideoTitle message={"SecondaryVideo"} action={addSecondaryVideoDetails} movieId = {param} />
         </div>

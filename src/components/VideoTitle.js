@@ -27,7 +27,7 @@ const VideoTitle = ({ message, action, movieId }) => {
       <div className="relative left-14 w-[34%] h-screen flex justify-center flex-col animated-scale">
         {showTitle.logo? (
           <img
-            className="h-32"
+            className="h-24"
             src={IMAGE_CDN_URL + showTitle.logo}
           />
         ) : (
