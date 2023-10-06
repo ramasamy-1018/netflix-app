@@ -13,8 +13,12 @@ import TvShowTrailerContainer from "./TvShowTrailerContainer";
 import SideBar from "../SideBar";
 import TvShowSecondaryContainer from "./TvShowSecondaryContainer";
 import useFilterMovieByCategory from "../../hooks/useFilterMoviesByCategory";
+import { useSelector } from "react-redux";
 
 const ShowAllTvShows = () => {
+
+  const showCastDetails = useSelector((store) => store.tv.showCastDetails)
+
   const genres = "80%7C10765%7C10768%7C35";
   useFilterMovieByCategory("tv", addTopRatedTvShows, "top_rated")
   useFilterMovieByLanguage("tv", addEnglishTvShows, "en", "first_air_date_year", genres);
@@ -28,7 +32,7 @@ const ShowAllTvShows = () => {
     <div>
       <SideBar showMovies={true} ShowTv={false} />
       <TvShowTrailerContainer />
-      <TvShowSecondaryContainer />
+      { showCastDetails && <TvShowSecondaryContainer /> }
 
     </div>
   );

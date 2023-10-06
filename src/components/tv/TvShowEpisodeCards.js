@@ -15,7 +15,7 @@ const TvShowEpisodeCards = ({episode,setShowOverlay}) => {
       <div className='p-2 w-[70%]'>
         <p className='text-md font-bold' >Episode {episode_number}</p>
         <p className='text-md font-semibold'>{name}</p>
-        <p className='text-sm font-light'>{overview}</p>
+        <p className='text-md font-light'>{overview}</p>
       </div>
       <p className='w-[5%] flex justify-center items-center px-2'>{runtime}m</p>
     </div>
