@@ -24,7 +24,7 @@ const MovieTitle = ({ message, action, movieId }) => {
 
   return (
     <div className="absolute w-[100%] text-white flex flex-col bg-gradient-to-r from-black bg-opacity-60 justify-center">
-      <div className="relative left-14 w-[34%] h-screen flex justify-center flex-col animated-scale">
+      <div className="relative left-20 w-[34%] h-screen flex justify-center flex-col animated-scale">
         {showTitle.logo? (
           <img
             className="h-24"

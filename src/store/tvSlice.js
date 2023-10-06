@@ -14,6 +14,9 @@ const tvSlice = createSlice({
     mainTvShowVideoDetails: null,
     secondaryTvShowVideoTrailer: null,
     secondaryTvShowVideoDetails: null,
+    tvShowSeasonDetails: null,
+    tvShowCastDetails: null,
+    showCastDetails: true
   },
   reducers: {
 
@@ -61,12 +64,32 @@ const tvSlice = createSlice({
       state.secondaryTvShowVideoDetails = action.payload;
     },
 
-    removeSecondaryTvShowVideoTrailer: (state, action) => {
+    removeSecondaryTvShowVideoTrailer: (state) => {
       state.secondaryTvShowVideoTrailer = null;
     },
 
-    removeSecondaryTvShowVideoDetails: (state, action) => {
+    removeSecondaryTvShowVideoDetails: (state) => {
       state.secondaryTvShowVideoDetails = null;
+    },
+
+    addTvShowSeasonDetails: (state, action) => {
+      state.tvShowSeasonDetails = action.payload;
+    },
+
+    removeTvShowSeasonDetails: (state) => {
+      state.tvShowSeasonDetails = null;
+    },
+
+    addTvShowCastDetails: (state, action) => {
+      state.tvShowCastDetails = action.payload;
+    },
+
+    removeTvShowCastDetails: (state) => {
+      state.tvShowCastDetails = null;
+    },
+
+    ShowCastDetails: (state, action) => {
+      state.showCastDetails = action.payload;
     },
   },
 });
@@ -84,6 +107,11 @@ export const {
   addSecondaryTvShowVideoTrailer,
   addSecondaryTvShowVideoDetails,
   removeSecondaryTvShowVideoTrailer,
-  removeSecondaryTvShowVideoDetails,  
+  removeSecondaryTvShowVideoDetails,
+  addTvShowSeasonDetails,
+  removeTvShowSeasonDetails,
+  addTvShowCastDetails,
+  removeTvShowCastDetails,
+  ShowCastDetails  
 } = tvSlice.actions;
 export default tvSlice.reducer;

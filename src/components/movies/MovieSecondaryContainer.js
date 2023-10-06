@@ -10,7 +10,7 @@ const MovieSecondaryContainer = () => {
   
   return (
     <div className='absolute overflow-hidden top-full w-[100%] text-white'>
-    <div className='pl-[9%] pt-1 bg-black'>
+    <div className='pl-[10.5%] pt-1 bg-black'>
         <MovieListContainer title={"Now Playing"} movies = {movies.nowPlayingMovies} />
         <MovieListContainer title={"Popular"} movies = {movies.popularMovies} />
         <MovieListContainer title={"Top Rated"} movies = {movies.topRatedMovies} />

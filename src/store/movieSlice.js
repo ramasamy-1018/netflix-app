@@ -16,6 +16,7 @@ const movieSlice = createSlice({
     mainMovieVideoDetails: null,
     secondaryMovieVideoTrailer: null,
     secondaryMovieVideoDetails: null,
+    movieCastDetails: null
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -77,6 +78,14 @@ const movieSlice = createSlice({
     removeSecondaryMovieVideoDetails: (state, action) => {
       state.secondaryMovieVideoDetails = null;
     },
+
+    addMovieCastDetails: (state, action) => {
+      state.movieCastDetails = action.payload;
+    },
+
+    removeMovieCastDetails: (state) => {
+      state.movieCastDetails = null;
+    },
   },
 });
 
@@ -95,6 +104,8 @@ export const {
   addSecondaryMovieVideoTrailer,
   addSecondaryMovieVideoDetails,
   removeSecondaryMovieVideoTrailer,
-  removeSecondaryMovieVideoDetails,  
+  removeSecondaryMovieVideoDetails,
+  addMovieCastDetails,
+  removeMovieCastDetails  
 } = movieSlice.actions;
 export default movieSlice.reducer;
