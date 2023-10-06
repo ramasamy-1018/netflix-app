@@ -16,13 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const SideBar = ({ showMovies, ShowTv }) => {
-  const [selectedIcon, setSelectedIcon] = useState(null);
   const navigate = useNavigate();
-
-  const handleIconClick = (icon) => {
-    setSelectedIcon(icon);
-  }
-
 
   const handleMouseEnter = (event, sharpIcon) => {
     event.currentTarget
@@ -61,6 +55,8 @@ const SideBar = ({ showMovies, ShowTv }) => {
             className="flex flex-col items-center group"
             onMouseEnter={(e) => handleMouseEnter(e, searchSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, searchOutline)}
+            onClick={() => navigate("/search")}
+
           >
             <IonIcon className="w-6 h-6 hover:scale-150" icon={searchOutline} />
             <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">

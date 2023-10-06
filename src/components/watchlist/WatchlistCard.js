@@ -8,7 +8,7 @@ const WatchlistCard = ({item}) => {
 
   return (
     <div
-      className="flex justify-center items-center w-[80%] h-52 rounded-lg bg-slate-200 text-black mt-6 ml-32 p-2">
+      className="flex justify-center items-center w-[80%] h-44 rounded-lg bg-slate-200 text-black mt-6 ml-32 p-2">
       <img className="w-[25%] h-32 pr-6" src={IMAGE_CDN_URL + backdrop_path} />
       <div className=" w-[70%]">
         <p className="text-md font-bold pb-2">{title} ({releaseYear})</p>
