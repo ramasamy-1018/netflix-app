@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import useGetCastDetails from "../hooks/useGetCastDetails";
+import useGetCastDetails from "../../hooks/useGetCastDetails";
 import CastDetailsCard from "./CastDetailsCard";
 
 const CastDetailsContainer = ({ stream, action, title, id }) => {
@@ -17,8 +17,6 @@ const CastDetailsContainer = ({ stream, action, title, id }) => {
   if (stream === "movie" && !movieCastDetails) return null;
 
   const castDetails = stream == "movie" ? movieCastDetails : tvShowCastDetails;
-
-  console.log(castDetails);
 
   return (
     <div className="absolute overflow-hidden top-full w-[100%] text-white">

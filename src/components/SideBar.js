@@ -99,6 +99,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
             className="flex flex-col items-center group"
             onMouseEnter={(e) => handleMouseEnter(e, albumsSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, albumsOutline)}
+            onClick={() => navigate("/watchlist")}
           >
             <IonIcon className="w-6 h-6 hover:scale-150" icon={albumsOutline} />
             <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">

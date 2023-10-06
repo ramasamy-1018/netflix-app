@@ -29,7 +29,7 @@ const useMovieDetails = (stream,action,id) => {
   };
 
   const setMovieDetails = async (responseJson) => {
-    const { title, overview, genres, runtime, adult,release_date,backdrop_path} = responseJson;
+    const { id,title, overview, genres, runtime, adult,release_date,backdrop_path} = responseJson;
     const genre = genres.reduce((acc, genre) => {
       acc.push(genre.name);
       return acc;
@@ -39,6 +39,7 @@ const useMovieDetails = (stream,action,id) => {
     const titleLogo = await getMovieLogo(); 
     dispatch(
       action({
+        id:id,
         title: title,
         logo:titleLogo,
         overview: overview,
@@ -53,7 +54,7 @@ const useMovieDetails = (stream,action,id) => {
   };
 
   const setTvShowDetails = async (responseJson) => {
-    const { name, overview, genres, number_of_seasons,number_of_episodes, adult,last_air_date,backdrop_path} = responseJson;
+    const { id, name, overview, genres, number_of_seasons,number_of_episodes, adult,last_air_date,backdrop_path} = responseJson;
     const genre = genres.reduce((acc, genre) => {
       acc.push(genre.name);
       return acc;
@@ -62,6 +63,7 @@ const useMovieDetails = (stream,action,id) => {
     const titleLogo = await getMovieLogo(); 
     dispatch(
       action({
+        id:id,
         title: name,
         logo:titleLogo,
         overview: overview,

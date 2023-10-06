@@ -3,7 +3,7 @@ import SideBar from "../SideBar";
 import { addSecondaryTvShowVideoTrailer, addSecondaryTvShowVideoDetails, addTvShowCastDetails } from "../../store/tvSlice";
 import TvShowTrailer from './TvShowTrailer';
 import TvShowTitle from './TvShowTitle';
-import CastDetailsContainer from "../CastDetailsContainer"
+import CastDetailsContainer from "../castdetails/CastDetailsContainer"
 import { removeTvShowCastDetails } from '../../store/tvSlice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

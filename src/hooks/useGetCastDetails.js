@@ -12,7 +12,6 @@ const useGetCastDetails = (stream,action,id) => {
       (api,API_OPTIONS
     );
     let responseJson = await response?.json();
-    console.log(responseJson)
     dispatch(action(responseJson?.cast))
   };
 

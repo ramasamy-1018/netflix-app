@@ -3,7 +3,7 @@ import SideBar from "../SideBar";
 import { addMovieCastDetails, addSecondaryMovieVideoDetails, addSecondaryMovieVideoTrailer, removeMovieCastDetails } from "../../store/movieSlice";
 import MovieTrailer from "./MovieTrailer";
 import MovieTitle from "./MovieTitle";
-import CastDetailsContainer from '../CastDetailsContainer';
+import CastDetailsContainer from '../castdetails/CastDetailsContainer';
 import { useDispatch } from "react-redux";
 import { useEffect } from 'react';
 

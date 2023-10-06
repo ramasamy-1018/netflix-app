@@ -1,29 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useMovieDetails from "../../hooks/useMovieDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { IMAGE_CDN_URL } from "../../utils/constants";
 import { IonIcon } from "@ionic/react";
-import { add, play } from "ionicons/icons";
+import { add, play,checkmark } from "ionicons/icons";
 import TvShowSeasonDetails from "./TvShowSeasonDetails";
 import { ShowCastDetails } from "../../store/tvSlice";
+import { addToWatchlist, removeFromWatchList } from "../../store/watchlistSlice";
 
 const TvShowTitle = ({ message, action, tvShowId }) => {
-
-  const [showOverlay ,setShowOverlay] = useState(false);
+  const [inWatchList, setInWatchList] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const dispatch = useDispatch();
 
   useMovieDetails("tv", action, tvShowId);
 
-  const handleClick = () => {
+  const getDetails = () => {
+    const presentInWatchList = watchList?.filter((item) => {console.log(item.id,tvShowId); return item.id == tvShowId});
+    const setValue = presentInWatchList.length ? true : false
+    setInWatchList(setValue);
+  };
+
+  const handleWatchListClick = () => {
+    setInWatchList(!inWatchList);
+    !inWatchList
+      ? dispatch(addToWatchlist(showTitle))
+      : dispatch(removeFromWatchList(tvShowId));
+  };
+
+  const handleWatchNowClick = () => {
     setShowOverlay(true);
-    dispatch(ShowCastDetails(false))
-  }
+    dispatch(ShowCastDetails(false));
+  };
 
   const closeOverlay = () => {
     setShowOverlay(false);
-    dispatch(ShowCastDetails(true))
-  }
+    dispatch(ShowCastDetails(true));
+  };
+
+  useEffect(() => {
+    getDetails();
+  },[]);
 
   const mainTvShowVideoDetails = useSelector(
     (store) => store.tv.mainTvShowVideoDetails
@@ -32,6 +50,8 @@ const TvShowTitle = ({ message, action, tvShowId }) => {
   const secondaryTvShowVideoDetails = useSelector(
     (store) => store.tv.secondaryTvShowVideoDetails
   );
+
+  const watchList = useSelector((store) => store.watchlist.watchlistArray);
 
   if (message == "MainVideo" && !mainTvShowVideoDetails) return null;
   if (message == "SecondaryVideo" && !secondaryTvShowVideoDetails) return null;
@@ -60,17 +80,22 @@ const TvShowTitle = ({ message, action, tvShowId }) => {
         </h2>
         <div className="flex pt-10">
           <button
-            className="bg-gray-500 flex text-2xl font-bold w-5/6 h-16 bg-opacity-50 rounded-lg justify-center items-center"
-            onClick={handleClick}
+            className="bg-gray-500 flex text-2xl font-bold w-5/6 h-16 bg-opacity-50 rounded-lg justify-center items-center hover:bg-gray-600"
+            onClick={handleWatchNowClick}
           >
             <IonIcon className="pr-4" icon={play} /> Watch Season 1
           </button>
-          <button className="bg-gray-500 ml-2 w-1/6 h-16 text-3xl font-extraboldbold bg-opacity-50 rounded-lg flex justify-center items-center">
-            <IonIcon icon={add} />
+          <button
+            className="bg-gray-500 ml-2 w-1/6 h-16 text-3xl font-extraboldbold bg-opacity-50 rounded-lg flex justify-center items-center hover:bg-gray-600"
+            onClick={handleWatchListClick}
+          >
+            <IonIcon icon={inWatchList ? checkmark : add} />
           </button>
         </div>
       </div>
-      {showOverlay && <TvShowSeasonDetails tvShowId = {tvShowId} closeOverlay={closeOverlay}/> }
+      {showOverlay && (
+        <TvShowSeasonDetails tvShowId={tvShowId} closeOverlay={closeOverlay} />
+      )}
     </div>
   );
 };
