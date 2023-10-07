@@ -30,7 +30,7 @@ const MovieTitle = ({showTitle}) => {
 
   const handleWatchListClick = () => {
     setInWatchList(!inWatchList);
-    !inWatchList ? dispatch(addToWatchlist(showTitle)) : dispatch(removeFromWatchList(showTitle.movieId));
+    !inWatchList ? dispatch(addToWatchlist(showTitle)) : dispatch(removeFromWatchList(showTitle.id));
   };
 
   return (
