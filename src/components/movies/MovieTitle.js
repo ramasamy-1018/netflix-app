@@ -15,18 +15,18 @@ const MovieTitle = ({showTitle}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getDetails();
+    //getDetails();
   },[]);
 
-  const watchList = useSelector((store) => store.watchlist.watchlistArray);
-  if(!watchList) return <Shimmer />
+  // const watchList = useSelector((store) => store.watchlist.watchlistArray);
+  // if(!watchList) return <Shimmer />
 
-  const getDetails = () => {
-    const presentInWatchList = watchList?.filter((item) => { return item.id == showTitle.id});
-    const setValue = presentInWatchList.length ? true : false
-    console.log(setValue)
-    setInWatchList(setValue);
-  };
+  // const getDetails = () => {
+  //   const presentInWatchList = watchList?.filter((item) => { return item.id == showTitle.id});
+  //   const setValue = presentInWatchList.length ? true : false
+  //   console.log(setValue)
+  //   setInWatchList(setValue);
+  // };
 
   const handleWatchListClick = () => {
     setInWatchList(!inWatchList);

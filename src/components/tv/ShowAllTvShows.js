@@ -3,10 +3,12 @@ import TvShowTrailerContainer from "./TvShowTrailerContainer";
 import TvShowSecondaryContainer from "./TvShowSecondaryContainer";
 import Shimmer from "../../utils/Shimmer";
 import useAddTvShowsToStore from "../../hooks/useAddTvShowsToStore"
+import { useSelector } from "react-redux";
 
 const ShowAllTvShows = () => {
 
   const [contentLoaded, setContentLoaded] = useState(false);
+  const showCastDetails = useSelector((store) => store.tv.showCastDetails);
 
   useAddTvShowsToStore();
 
@@ -21,7 +23,7 @@ const ShowAllTvShows = () => {
   return (
     <div>
       <TvShowTrailerContainer />
-      <TvShowSecondaryContainer />
+      {showCastDetails &&<TvShowSecondaryContainer />}
 
     </div>
   );
