@@ -7,6 +7,7 @@ import { add, play,checkmark } from "ionicons/icons";
 import TvShowSeasonDetails from "./TvShowSeasonDetails";
 import { ShowCastDetails } from "../../store/tvSlice";
 import { addToWatchlist, removeFromWatchList } from "../../store/watchlistSlice";
+import Shimmer from "../../utils/Shimmer";
 
 const TvShowTitle = ({ message, action, tvShowId }) => {
   const [inWatchList, setInWatchList] = useState(false);
@@ -53,8 +54,8 @@ const TvShowTitle = ({ message, action, tvShowId }) => {
 
   const watchList = useSelector((store) => store.watchlist.watchlistArray);
 
-  if (message == "MainVideo" && !mainTvShowVideoDetails) return null;
-  if (message == "SecondaryVideo" && !secondaryTvShowVideoDetails) return null;
+  if (message == "MainVideo" && !mainTvShowVideoDetails) return (<Shimmer />);
+  if (message == "SecondaryVideo" && !secondaryTvShowVideoDetails) return (<Shimmer />);
 
   const showTitle =
     message == "MainVideo"
@@ -73,7 +74,7 @@ const TvShowTitle = ({ message, action, tvShowId }) => {
           {showTitle.releaseYear} • {showTitle.seasons} • {showTitle.episodes}{" "}
         </h1>
         <h2 className="text-lg font-medium pt-7 inline-block">
-          {showTitle.overview}
+        {showTitle.overview.split(".")[0]}.{showTitle.overview.split(".")[1]}.{showTitle.overview.split(".")[2]}.{showTitle.overview.split(".")[3]}.
         </h2>
         <h2 className="text-2xl font-extrabold pt-7">
           {showTitle.genres.join(" | ")}

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { IonIcon } from "@ionic/react";
 import { searchOutline } from "ionicons/icons";
 import { API_OPTIONS } from "../../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addSearchResult } from "../../store/movieSlice";
 
 const SearchBar = () => {

@@ -5,9 +5,8 @@ const TvShowEpisodeCards = ({episode,setShowOverlay}) => {
 
   const {name,overview,episode_number,runtime,still_path} = episode;
 
-  if (!episode) return null
+  if (!(name && overview && episode_number && runtime && still_path)) return null
 
-  console.log(name,overview,episode_number,runtime,still_path)
 
   return (
     <div className='flex w-[60%] mx-14 my-5 px-4 py-4 h-auto justify-center items-center rounded-lg bg-slate-200 text-black' onClick={()=>setShowOverlay(false)}>

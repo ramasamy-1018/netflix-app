@@ -10,10 +10,20 @@ import MovieTrailer from "./MovieTrailer";
 import MovieTitle from "./MovieTitle";
 import CastDetailsContainer from "../castdetails/CastDetailsContainer";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "../../utils/Shimmer";
 
 const SelectedMovie = () => {
   const dispatch = useDispatch();
+
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setContentLoaded(true);
+    }, 1000);
+  }, []);
+
   useEffect(() => {
     return () => {
       dispatch(removeMovieCastDetails());
@@ -21,11 +31,12 @@ const SelectedMovie = () => {
   }, []);
 
   const { param } = useParams();
-  if (!param) return null;
+
+  if(!contentLoaded) return (<Shimmer />)
+
 
   return (
     <div>
-      <SideBar showMovies={true} ShowTv={true} />
       <MovieTrailer
         message={"SecondaryVideo"}
         action={addSecondaryMovieVideoTrailer}

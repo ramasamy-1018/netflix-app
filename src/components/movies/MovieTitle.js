@@ -8,6 +8,7 @@ import {
   removeFromWatchList,
 } from "../../store/watchlistSlice";
 import { useEffect, useState } from "react";
+import Shimmer from "../../utils/Shimmer";
 
 const MovieTitle = ({ message, action, movieId }) => {
   const [inWatchList, setInWatchList] = useState(false);
@@ -34,15 +35,15 @@ const MovieTitle = ({ message, action, movieId }) => {
   },[]);
 
   const mainMovieVideoDetails = useSelector(
-    (store) => store.movies.mainMovieVideoDetails
+    (store) => store.movie.mainMovieVideoDetails
   );
   const secondaryMovieVideoDetails = useSelector(
-    (store) => store.movies.secondaryMovieVideoDetails
+    (store) => store.movie.secondaryMovieVideoDetails
   );
   const watchList = useSelector((store) => store.watchlist.watchlistArray);
 
-  if (message == "MainVideo" && !mainMovieVideoDetails) return null;
-  if (message == "SecondaryVideo" && !secondaryMovieVideoDetails) return null;
+  if (message == "MainVideo" && !mainMovieVideoDetails) return (null);
+  if (message == "SecondaryVideo" && !secondaryMovieVideoDetails) return (null);
 
   const showTitle =
       message == "MainVideo"
@@ -61,7 +62,7 @@ const MovieTitle = ({ message, action, movieId }) => {
           {showTitle.releaseYear} • {showTitle.runtime}{" "}
         </h1>
         <h2 className="text-lg font-medium pt-7 inline-block">
-          {showTitle.overview}
+        {showTitle.overview.split(".")[0]}.{showTitle.overview.split(".")[1]}.{showTitle.overview.split(".")[2]}.{showTitle.overview.split(".")[3]}.
         </h2>
         <h2 className="text-2xl font-extrabold pt-7">
           {showTitle.genres.join(" | ")}

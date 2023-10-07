@@ -14,21 +14,33 @@ import {
 import MovieSecondaryContainer from "./MovieSecondaryContainer";
 import SideBar from "../SideBar";
 import MovieTrailerContainer from "./MovieTrailerContainer";
+import { useEffect, useState } from "react";
+import Shimmer from "../../utils/Shimmer";
 
 const ShowAllMovies = () => {
-  useFilterMovieByCategory("movie", addNowPlayingMovies, "now_playing");
-  useFilterMovieByCategory("movie", addPopularMovies, "popular");
-  useFilterMovieByCategory("movie", addTopRatedMovies, "top_rated");
-  useFilterMovieByCategory("movie", addUpcomingMovies, "upcoming");
-  useFilterMovieByLanguage("movie", addTamilMovies, "ta", "primary_release_year");
-  useFilterMovieByLanguage("movie", addTeluguMovies, "te","primary_release_year");
-  useFilterMovieByLanguage("movie", addHindiMovies, "hi", "primary_release_year");
-  useFilterMovieByLanguage("movie", addMalayalamMovies, "ml", "primary_release_year");
-  useFilterMovieByLanguage("movie", addKannadaMovies, "ka", "primary_release_year");
+
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setContentLoaded(true);
+    }, 1000);
+  }, []);
+
+  useFilterMovieByCategory("movie", addNowPlayingMovies, "now_playing","nowPlayingMovies");
+  useFilterMovieByCategory("movie", addPopularMovies, "popular","popularMovies");
+  useFilterMovieByCategory("movie", addTopRatedMovies, "top_rated","topRatedMovies");
+  useFilterMovieByCategory("movie", addUpcomingMovies, "upcoming","upcomingMovies");
+  useFilterMovieByLanguage("movie", addTamilMovies, "tamilMovies", "ta", "primary_release_year");
+  useFilterMovieByLanguage("movie", addTeluguMovies, "teluguMovies", "te","primary_release_year");
+  useFilterMovieByLanguage("movie", addHindiMovies,"hindiMovies", "hi", "primary_release_year");
+  useFilterMovieByLanguage("movie", addMalayalamMovies,"malayalamMovies", "ml", "primary_release_year");
+  useFilterMovieByLanguage("movie", addKannadaMovies,"kannadaMovies", "ka", "primary_release_year");
+
+  if(!contentLoaded) return (<Shimmer />)
 
   return (
     <div>
-      <SideBar showMovies={false} ShowTv={true}/>
       <MovieTrailerContainer />
       <MovieSecondaryContainer />
     </div>

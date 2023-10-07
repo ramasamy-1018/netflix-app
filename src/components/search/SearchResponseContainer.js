@@ -5,9 +5,9 @@ import { removeSearchResult } from "../../store/movieSlice";
 
 const SearchResponseContainer = () => {
   const dispatch = useDispatch();
-  const searchResult = useSelector((store) => store.movies.searchResult);
+  const searchResult = useSelector((store) => store.movie.searchResult);
   const nowPlayingMovies = useSelector(
-    (store) => store.movies.nowPlayingMovies
+    (store) => store.movie.nowPlayingMovies
   );
 
   useEffect(() => {

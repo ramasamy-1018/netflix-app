@@ -6,12 +6,16 @@ import {
   removeSecondaryTvShowVideoDetails,
 } from "../../store/tvSlice";
 import { IMAGE_CDN_URL } from "../../utils/constants";
+import Shimmer from "../../utils/Shimmer";
+import SideBar from "../SideBar";
 
 const TvShowTrailer = ({ message, action, tvShowId }) => {
   const dispatch = useDispatch();
-  useGetTrailer("tv",action,tvShowId);
+  useGetTrailer("tv", action, tvShowId);
 
-  const mainTvShowVideoTrailer = useSelector((store) => store.tv.mainTvShowVideoTrailer);
+  const mainTvShowVideoTrailer = useSelector(
+    (store) => store.tv.mainTvShowVideoTrailer
+  );
   const secondaryTvShowtrailerVideo = useSelector(
     (store) => store.tv.secondaryTvShowVideoTrailer
   );
@@ -29,22 +33,30 @@ const TvShowTrailer = ({ message, action, tvShowId }) => {
     };
   }, []);
 
-  if (message == "MainVideo" && !mainTvShowVideoTrailer && !mainTvShowVideoDetails) return null;
+  if (
+    message == "MainVideo" &&
+    !mainTvShowVideoTrailer &&
+    !mainTvShowVideoDetails
+  )
+    return <Shimmer />;
   if (
     message == "SecondaryVideo" &&
     !secondaryTvShowtrailerVideo &&
     !secondaryTvShowVideoDetails
   )
-    return null;
+    return <Shimmer />;
 
   const playVideo =
-    message == "MainVideo" ? mainTvShowVideoTrailer : secondaryTvShowtrailerVideo;
+    message == "MainVideo"
+      ? mainTvShowVideoTrailer
+      : secondaryTvShowtrailerVideo;
   const backdrop =
     message === "MainVideo"
       ? mainTvShowVideoDetails
-      : secondaryTvShowVideoDetails
+      : secondaryTvShowVideoDetails;
   return (
     <div>
+      <SideBar showMovies={true} ShowTv={true} />
       {playVideo ? (
         <div className="absolute h-screen aspect-video">
           <iframe
@@ -58,7 +70,10 @@ const TvShowTrailer = ({ message, action, tvShowId }) => {
         </div>
       ) : (
         <div className="absolute h-screen w-screen">
-          <img className="w-[100%] h-[100%]" src={IMAGE_CDN_URL + backdrop.backdrop_path} />
+          <img
+            className="w-[100%] h-[100%]"
+            src={IMAGE_CDN_URL + backdrop.backdrop_path}
+          />
         </div>
       )}
     </div>

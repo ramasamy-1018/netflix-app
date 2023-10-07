@@ -4,7 +4,7 @@ import MovieListContainer from './MovieListContainer';
 
 const MovieSecondaryContainer = () => {
 
-  const movies = useSelector((store) => store.movies);
+  const movies = useSelector((store) => store.movie);
 
   if(!movies) return null
   

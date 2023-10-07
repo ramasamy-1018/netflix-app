@@ -1,9 +1,11 @@
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const useFilterMovieByCategory = (stream,action,category) => {
+const useFilterMovieByCategory = (stream,action,category,text) => {
   const dispatch = useDispatch();
+
+  const result = useSelector((store) => store[stream][text])
 
   const getMoviesByLanguage = async () => {
     let response = await fetch(
@@ -15,7 +17,7 @@ const useFilterMovieByCategory = (stream,action,category) => {
   };
 
   useEffect(() => {
-    getMoviesByLanguage();
+    !result && getMoviesByLanguage();
   }, []);
 };
 

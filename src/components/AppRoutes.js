@@ -11,7 +11,11 @@ import Profile from "./Profile";
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <ShowAllMovies/>,
+    element: <Profile/>,
+  },
+  {
+    path: "/movie",
+    element: <ShowAllMovies />,
   },
   {
     path: "/movie/:param",

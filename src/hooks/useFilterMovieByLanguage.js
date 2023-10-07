@@ -1,13 +1,14 @@
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const useFilterMovieByLanguage = (stream,action,language,dateParam,genres) => {
+const useFilterMovieByLanguage = (stream,action,text,language,dateParam,genres) => {
   
   const dispatch = useDispatch();
+  const result = useSelector((store) => store[stream][text])
 
   useEffect(() => {
-    getMoviesByLanguage();
+    !result && getMoviesByLanguage();
   }, []);
 
   const getMoviesByLanguage = async () => {

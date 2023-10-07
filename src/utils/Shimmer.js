@@ -1,0 +1,14 @@
+import React from "react";
+import SideBar from "../components/SideBar";
+
+const Shimmer = () => {
+  return (
+    <div>
+      <div className="relative h-screen bg-white p-6">
+        <div className="relative h-full rounded-lg bg-gray-600 animate-pulse"></div>
+      </div>
+    </div>
+  );
+};
+
+export default Shimmer;

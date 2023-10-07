@@ -5,7 +5,7 @@ import { addMainMovieVideoDetails, addMainMovieVideoTrailer } from "../../store/
 
 const MovieTrailerContainer = () => {
     
-    const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMovies)
+    const nowPlayingMovies = useSelector((store) => store.movie.nowPlayingMovies)
     if(!nowPlayingMovies) return(null);
 
     return(

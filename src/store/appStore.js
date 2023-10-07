@@ -5,7 +5,7 @@ import watchlistReducer from "./watchlistSlice"
 
 const appStore = configureStore({
     reducer:{
-        movies: movieReducer,
+        movie: movieReducer,
         tv: tvReducer,
         watchlist: watchlistReducer
     }

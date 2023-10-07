@@ -39,16 +39,16 @@ const SideBar = ({ showMovies, ShowTv }) => {
             src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
           />
         </div>
-        <div className="h-2/4 flex flex-col items-center justify-evenly mt-5">
+        <div className="h-2/4 flex flex-col items-center justify-evenly mt-5 hover:cursor-pointer">
           <div
             className="flex flex-col items-center group"
             onMouseEnter={(e) => handleMouseEnter(e, peopleSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, peopleOutline)}
-            onClick={() => navigate("/profile")}
+            onClick={() => navigate("/")}
 
           >
-            <IonIcon className="w-6 h-6 hover:scale-150" icon={peopleOutline}/>
-            <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+            <IonIcon className="w-6 h-6 group-hover:scale-125" icon={peopleOutline}/>
+            <p className="py-2 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-opacity">
               Profile
             </p>
           </div>
@@ -60,8 +60,8 @@ const SideBar = ({ showMovies, ShowTv }) => {
             onClick={() => navigate("/search")}
 
           >
-            <IonIcon className="w-6 h-6 hover:scale-150" icon={searchOutline} />
-            <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+            <IonIcon className="w-6 h-6 group-hover:scale-125" icon={searchOutline} />
+            <p className="py-2 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-opacity">
               Search
             </p>
           </div>
@@ -71,10 +71,10 @@ const SideBar = ({ showMovies, ShowTv }) => {
               className="flex flex-col items-center group"
               onMouseEnter={(e) => handleMouseEnter(e, filmSharp)}
               onMouseLeave={(e) => handleMouseLeave(e, filmOutline)}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/movie")}
             >
-              <IonIcon className="w-6 h-6 hover:scale-150" icon={filmOutline} />
-              <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+              <IonIcon className="w-6 h-6 group-hover:scale-125" icon={filmOutline} />
+              <p className="py-2 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-opacity">
                 Movies
               </p>
             </div>
@@ -87,8 +87,8 @@ const SideBar = ({ showMovies, ShowTv }) => {
               onClick={() => navigate("/tvshow")}
 
             >
-              <IonIcon className="w-6 h-6 hover:scale-150" icon={tvOutline} />
-              <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+              <IonIcon className="w-6 h-6 group-hover:scale-125" icon={tvOutline} />
+              <p className="py-2 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-opacity">
                 Tv Shows
               </p>
             </div>
@@ -99,8 +99,8 @@ const SideBar = ({ showMovies, ShowTv }) => {
             onMouseLeave={(e) => handleMouseLeave(e, albumsOutline)}
             onClick={() => navigate("/watchlist")}
           >
-            <IonIcon className="w-6 h-6 hover:scale-150" icon={albumsOutline} />
-            <p className="py-2 opacity-0 group-hover:opacity-100 scale-110 transition-opacity">
+            <IonIcon className="w-6 h-6 group-hover:scale-125" icon={albumsOutline} />
+            <p className="py-2 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-opacity">
               Watchlist
             </p>
           </div>

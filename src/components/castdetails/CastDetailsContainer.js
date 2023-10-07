@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import useGetCastDetails from "../../hooks/useGetCastDetails";
 import CastDetailsCard from "./CastDetailsCard";
+import Shimmer from "../../utils/Shimmer";
 
 const CastDetailsContainer = ({ stream, action, title, id }) => {
   useGetCastDetails(stream, action, id);
@@ -10,11 +11,11 @@ const CastDetailsContainer = ({ stream, action, title, id }) => {
     (store) => store?.tv?.tvShowCastDetails
   );
   const movieCastDetails = useSelector(
-    (store) => store?.movies?.movieCastDetails
+    (store) => store?.movie?.movieCastDetails
   );
 
-  if (stream === "tv" && !tvShowCastDetails) return null;
-  if (stream === "movie" && !movieCastDetails) return null;
+  if (stream === "tv" && !tvShowCastDetails) return (null);
+  if (stream === "movie" && !movieCastDetails) return (null);
 
   const castDetails = stream == "movie" ? movieCastDetails : tvShowCastDetails;
 
