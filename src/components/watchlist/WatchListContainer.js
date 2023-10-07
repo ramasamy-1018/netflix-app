@@ -20,7 +20,7 @@ const WatchListConntainer = () => {
           <div className="flex ml-32 items-center">
             <h1 className="text-xl font-sans font-bold">Your Watchlist</h1>
             <button
-              className="text-md font-sans font-bold w-30 h-12 ml-[62%] p-2 bg-gray-500 rounded-lg"
+              className="text-md font-sans font-bold w-30 h-12 ml-[65%] p-2 bg-gray-500 rounded-lg"
               onClick={handleClear}
             >
               Clear Watchlist

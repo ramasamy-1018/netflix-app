@@ -14,7 +14,7 @@ const MovieCard = ({movieId,poster}) => {
 
   return (
     <div className="w-44 mr-3 overflow-hidden" onClick={() => handleClick(movieId)}>
-      <img className="hover:scale-110" src={IMAGE_CDN_URL + poster} />
+      <img className="hover:scale-105" src={IMAGE_CDN_URL + poster} />
     </div>
   );
 };

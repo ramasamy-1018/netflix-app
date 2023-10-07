@@ -6,6 +6,7 @@ import ShowAllTvShows from "./tv/ShowAllTvShows"
 import SelectedTvShow from "./tv/SelectedTvShow";
 import WatchListPage from "./watchlist/WatchListPage";
 import SearchPage from "./search/SearchPage";
+import Profile from "./Profile";
 
 const appRouter = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const appRouter = createBrowserRouter([
   {
     path: "/search",
     element: <SearchPage />,
-  }
+  },
+  {
+    path: "/profile",
+    element: <Profile/>,
+  },
 ]);
 
 const AppRoutes = () => {

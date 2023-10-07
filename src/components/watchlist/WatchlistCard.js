@@ -12,7 +12,7 @@ const WatchlistCard = ({item}) => {
       <img className="w-[25%] h-32 pr-6" src={IMAGE_CDN_URL + backdrop_path} />
       <div className=" w-[70%]">
         <p className="text-md font-bold pb-2">{title} ({releaseYear})</p>
-        <p className="text-md font-light pb-2">{overview}</p>
+        <p className="text-md font-light pb-2">{overview.split(".")[0]}.{overview.split(".")[1]}.{overview.split(".")[2]}.</p>
         <p className="text-md font-bold">{genres.join(" | ")}</p>
       </div>
     </div>
