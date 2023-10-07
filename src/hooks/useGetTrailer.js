@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 
 const useGetTrailer = (stream,action,id) => {
+
   const dispatch = useDispatch();
 
   const getTrailer = async () => {

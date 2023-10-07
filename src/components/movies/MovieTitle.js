@@ -1,5 +1,4 @@
-import useMovieDetails from "../../hooks/useMovieDetails";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { IMAGE_CDN_URL } from "../../utils/constants";
 import { IonIcon } from "@ionic/react";
 import { add, play, checkmark } from "ionicons/icons";
@@ -10,62 +9,46 @@ import {
 import { useEffect, useState } from "react";
 import Shimmer from "../../utils/Shimmer";
 
-const MovieTitle = ({ message, action, movieId }) => {
+const MovieTitle = ({showTitle}) => {
+
   const [inWatchList, setInWatchList] = useState(false);
   const dispatch = useDispatch();
-
-  useMovieDetails("movie", action, movieId);
-
-  const getDetails = () => {
-    const presentInWatchList = watchList?.filter((item) => {console.log(item.id,movieId); return item.id == movieId});
-    const setValue = presentInWatchList.length ? true : false
-    setInWatchList(setValue);
-  };
-
-  const handleWatchListClick = () => {
-    setInWatchList(!inWatchList);
-    !inWatchList
-      ? dispatch(addToWatchlist(showTitle))
-      : dispatch(removeFromWatchList(movieId));
-  };
-
 
   useEffect(() => {
     getDetails();
   },[]);
 
-  const mainMovieVideoDetails = useSelector(
-    (store) => store.movie.mainMovieVideoDetails
-  );
-  const secondaryMovieVideoDetails = useSelector(
-    (store) => store.movie.secondaryMovieVideoDetails
-  );
   const watchList = useSelector((store) => store.watchlist.watchlistArray);
+  if(!watchList) return <Shimmer />
 
-  if (message == "MainVideo" && !mainMovieVideoDetails) return (null);
-  if (message == "SecondaryVideo" && !secondaryMovieVideoDetails) return (null);
+  const getDetails = () => {
+    const presentInWatchList = watchList?.filter((item) => { return item.id == showTitle.id});
+    const setValue = presentInWatchList.length ? true : false
+    console.log(setValue)
+    setInWatchList(setValue);
+  };
 
-  const showTitle =
-      message == "MainVideo"
-        ? mainMovieVideoDetails
-        : secondaryMovieVideoDetails;
+  const handleWatchListClick = () => {
+    setInWatchList(!inWatchList);
+    !inWatchList ? dispatch(addToWatchlist(showTitle)) : dispatch(removeFromWatchList(showTitle.movieId));
+  };
 
   return (
     <div className="absolute w-[100%] text-white flex flex-col bg-gradient-to-r from-black bg-opacity-60 justify-center">
       <div className="relative left-20 w-[34%] h-screen flex justify-center flex-col animated-scale">
         {showTitle.logo ? (
-          <img className="h-24" src={IMAGE_CDN_URL + showTitle.logo} />
+          <img className="h-24" src={IMAGE_CDN_URL + showTitle?.logo} />
         ) : (
-          <h1 className="text-5xl font-extrabold pt-5">{showTitle.title}</h1>
+          <h1 className="text-5xl font-extrabold pt-5">{showTitle?.title}</h1>
         )}
         <h1 className="text-2xl font-extrabold pt-5">
-          {showTitle.releaseYear} • {showTitle.runtime}{" "}
+          {showTitle?.releaseYear} • {showTitle?.runtime}{" "}
         </h1>
         <h2 className="text-lg font-medium pt-7 inline-block">
-        {showTitle.overview.split(".")[0]}.{showTitle.overview.split(".")[1]}.{showTitle.overview.split(".")[2]}.{showTitle.overview.split(".")[3]}.
+        {showTitle?.overview?.split(".")[0]}.{showTitle?.overview.split(".")[1]}.{showTitle?.overview?.split(".")[2]}.{showTitle?.overview.split(".")[3]}.
         </h2>
         <h2 className="text-2xl font-extrabold pt-7">
-          {showTitle.genres.join(" | ")}
+          {showTitle?.genres?.join(" | ")}
         </h2>
         <div className="flex pt-10">
           <button className="bg-gray-500 flex text-2xl font-bold w-5/6 h-16 bg-opacity-50 rounded-lg justify-center items-center hover:bg-gray-600">

@@ -14,8 +14,8 @@ const CastDetailsContainer = ({ stream, action, title, id }) => {
     (store) => store?.movie?.movieCastDetails
   );
 
-  if (stream === "tv" && !tvShowCastDetails) return (null);
-  if (stream === "movie" && !movieCastDetails) return (null);
+  if (stream === "tv" && !tvShowCastDetails) return (<Shimmer />);
+  if (stream === "movie" && !movieCastDetails) return (<Shimmer />);
 
   const castDetails = stream == "movie" ? movieCastDetails : tvShowCastDetails;
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import useGetTrailer from "../../hooks/useGetTrailer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   removeSecondaryTvShowVideoTrailer,
   removeSecondaryTvShowVideoDetails,
@@ -8,23 +7,12 @@ import {
 import { IMAGE_CDN_URL } from "../../utils/constants";
 import Shimmer from "../../utils/Shimmer";
 import SideBar from "../SideBar";
+import TvShowTitle from "./TvShowTitle";
+import useGetAllTvShowDetails from "../../hooks/useGetAllTvShowDetails"
 
-const TvShowTrailer = ({ message, action, tvShowId }) => {
+const TvShowTrailer = ({ message,tvShowId }) => {
   const dispatch = useDispatch();
-  useGetTrailer("tv", action, tvShowId);
-
-  const mainTvShowVideoTrailer = useSelector(
-    (store) => store.tv.mainTvShowVideoTrailer
-  );
-  const secondaryTvShowtrailerVideo = useSelector(
-    (store) => store.tv.secondaryTvShowVideoTrailer
-  );
-  const mainTvShowVideoDetails = useSelector(
-    (store) => store.tv.mainTvShowVideoDetails
-  );
-  const secondaryTvShowVideoDetails = useSelector(
-    (store) => store.tv.secondaryTvShowVideoDetails
-  );
+  const {playVideo,showTitle} = useGetAllTvShowDetails(message,tvShowId)
 
   useEffect(() => {
     return () => {
@@ -33,27 +21,8 @@ const TvShowTrailer = ({ message, action, tvShowId }) => {
     };
   }, []);
 
-  if (
-    message == "MainVideo" &&
-    !mainTvShowVideoTrailer &&
-    !mainTvShowVideoDetails
-  )
-    return <Shimmer />;
-  if (
-    message == "SecondaryVideo" &&
-    !secondaryTvShowtrailerVideo &&
-    !secondaryTvShowVideoDetails
-  )
-    return <Shimmer />;
+  if(!playVideo && !showTitle) return (<Shimmer />)
 
-  const playVideo =
-    message == "MainVideo"
-      ? mainTvShowVideoTrailer
-      : secondaryTvShowtrailerVideo;
-  const backdrop =
-    message === "MainVideo"
-      ? mainTvShowVideoDetails
-      : secondaryTvShowVideoDetails;
   return (
     <div>
       <SideBar showMovies={true} ShowTv={true} />
@@ -72,10 +41,11 @@ const TvShowTrailer = ({ message, action, tvShowId }) => {
         <div className="absolute h-screen w-screen">
           <img
             className="w-[100%] h-[100%]"
-            src={IMAGE_CDN_URL + backdrop.backdrop_path}
+            src={IMAGE_CDN_URL + showTitle.backdrop_path}
           />
         </div>
       )}
+      {showTitle && <TvShowTitle showTitle = {showTitle}/>}
     </div>
   );
 };

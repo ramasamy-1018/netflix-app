@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useMovieDetails from "../../hooks/useMovieDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { IMAGE_CDN_URL } from "../../utils/constants";
 import { IonIcon } from "@ionic/react";
@@ -9,25 +8,27 @@ import { ShowCastDetails } from "../../store/tvSlice";
 import { addToWatchlist, removeFromWatchList } from "../../store/watchlistSlice";
 import Shimmer from "../../utils/Shimmer";
 
-const TvShowTitle = ({ message, action, tvShowId }) => {
+const TvShowTitle = ({ showTitle }) => {
   const [inWatchList, setInWatchList] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
-
   const dispatch = useDispatch();
 
-  useMovieDetails("tv", action, tvShowId);
+  useEffect(() => {
+    getDetails();
+  },[]);
+
+  const watchList = useSelector((store) => store.watchlist.watchlistArray);
+  if(!watchList) return <Shimmer />
 
   const getDetails = () => {
-    const presentInWatchList = watchList?.filter((item) => {console.log(item.id,tvShowId); return item.id == tvShowId});
+    const presentInWatchList = watchList?.filter((item) => { return item.id == showTitle.id});
     const setValue = presentInWatchList.length ? true : false
     setInWatchList(setValue);
   };
 
   const handleWatchListClick = () => {
     setInWatchList(!inWatchList);
-    !inWatchList
-      ? dispatch(addToWatchlist(showTitle))
-      : dispatch(removeFromWatchList(tvShowId));
+    !inWatchList ? dispatch(addToWatchlist(showTitle)) : dispatch(removeFromWatchList(showTitle.id));
   };
 
   const handleWatchNowClick = () => {
@@ -39,28 +40,6 @@ const TvShowTitle = ({ message, action, tvShowId }) => {
     setShowOverlay(false);
     dispatch(ShowCastDetails(true));
   };
-
-  useEffect(() => {
-    getDetails();
-  },[]);
-
-  const mainTvShowVideoDetails = useSelector(
-    (store) => store.tv.mainTvShowVideoDetails
-  );
-
-  const secondaryTvShowVideoDetails = useSelector(
-    (store) => store.tv.secondaryTvShowVideoDetails
-  );
-
-  const watchList = useSelector((store) => store.watchlist.watchlistArray);
-
-  if (message == "MainVideo" && !mainTvShowVideoDetails) return (<Shimmer />);
-  if (message == "SecondaryVideo" && !secondaryTvShowVideoDetails) return (<Shimmer />);
-
-  const showTitle =
-    message == "MainVideo"
-      ? mainTvShowVideoDetails
-      : secondaryTvShowVideoDetails;
 
   return (
     <div className="absolute w-[100%] text-white flex flex-col bg-gradient-to-r from-black bg-opacity-60 justify-center">
@@ -95,7 +74,7 @@ const TvShowTitle = ({ message, action, tvShowId }) => {
         </div>
       </div>
       {showOverlay && (
-        <TvShowSeasonDetails tvShowId={tvShowId} closeOverlay={closeOverlay} />
+        <TvShowSeasonDetails tvShowId={showTitle.id} closeOverlay={closeOverlay} />
       )}
     </div>
   );

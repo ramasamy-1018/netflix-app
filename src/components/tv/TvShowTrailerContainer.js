@@ -11,7 +11,6 @@ const TvShowTrailerContainer = () => {
     return(
         <div >
             <TvShowTrailer message={"MainVideo"} action = {addMainTvShowVideoTrailer} tvShowId = {topRatedTvShows[0]?.id} />
-            <TvShowTitle message={"MainVideo"} action = {addMainTvShowVideoDetails} tvShowId = {topRatedTvShows[0]?.id} />
         </div>
     )
 }

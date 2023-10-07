@@ -1,30 +1,18 @@
 import React, { useEffect } from "react";
-import useGetTrailer from "../../hooks/useGetTrailer";
-import { useDispatch, useSelector } from "react-redux";
 import {
   removeSecondaryMovieVideoTrailer,
   removeSecondaryMovieVideoDetails,
 } from "../../store/movieSlice";
 import { IMAGE_CDN_URL } from "../../utils/constants";
-import Shimmer from "../../utils/Shimmer";
 import SideBar from "../SideBar";
+import { useDispatch } from "react-redux";
+import useGetAllMovieDetails from "../../hooks/useGetAllMovieDetails";
+import MovieTitle from "./MovieTitle";
+import Shimmer from "../../utils/Shimmer";
 
-const MovieTrailer = ({ message, action, movieId }) => {
+const MovieTrailer = ({ message,movieId }) => {
   const dispatch = useDispatch();
-  useGetTrailer("movie", action, movieId);
-
-  const mainMovieVideoTrailer = useSelector(
-    (store) => store.movie.mainMovieVideoTrailer
-  );
-  const secondaryMovietrailerVideo = useSelector(
-    (store) => store.movie.secondaryMovieVideoTrailer
-  );
-  const mainMovieVideoDetails = useSelector(
-    (store) => store.movie.mainMovieVideoDetails
-  );
-  const secondaryMovieVideoDetails = useSelector(
-    (store) => store.movie.secondaryMovieVideoDetails
-  );
+  const {playVideo,showTitle} = useGetAllMovieDetails(message,movieId)
 
   useEffect(() => {
     return () => {
@@ -33,25 +21,8 @@ const MovieTrailer = ({ message, action, movieId }) => {
     };
   }, []);
 
-  if (
-    message == "MainVideo" &&
-    !mainMovieVideoTrailer &&
-    !mainMovieVideoDetails
-  )
-    return <Shimmer />;
-  if (
-    message == "SecondaryVideo" &&
-    !secondaryMovietrailerVideo &&
-    !secondaryMovieVideoDetails
-  )
-    return <Shimmer />;
+  if(!playVideo && !showTitle) return (<Shimmer />)
 
-  const playVideo =
-    message == "MainVideo" ? mainMovieVideoTrailer : secondaryMovietrailerVideo;
-  const backdrop =
-    message === "MainVideo"
-      ? mainMovieVideoDetails
-      : secondaryMovieVideoDetails;
   return (
     <div>
       <SideBar showMovies={true} ShowTv={true} />
@@ -70,10 +41,11 @@ const MovieTrailer = ({ message, action, movieId }) => {
         <div className="absolute h-screen w-screen">
           <img
             className="w-[100%] h-[100%]"
-            src={IMAGE_CDN_URL + backdrop.backdrop_path}
+            src={IMAGE_CDN_URL + showTitle?.backdrop_path}
           />
         </div>
       )}
+      {showTitle && <MovieTitle showTitle = {showTitle} />}
     </div>
   );
 };

@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
 import {
   addSecondaryTvShowVideoTrailer,
-  addSecondaryTvShowVideoDetails,
   addTvShowCastDetails,
 } from "../../store/tvSlice";
 import TvShowTrailer from "./TvShowTrailer";
-import TvShowTitle from "./TvShowTitle";
 import CastDetailsContainer from "../castdetails/CastDetailsContainer";
 import { removeTvShowCastDetails } from "../../store/tvSlice";
 import { useEffect, useState } from "react";
@@ -42,19 +40,12 @@ const SelectedTvShow = () => {
         action={addSecondaryTvShowVideoTrailer}
         tvShowId={param}
       />
-      <TvShowTitle
-        message={"SecondaryVideo"}
-        action={addSecondaryTvShowVideoDetails}
-        tvShowId={param}
-      />
-      {showCastDetails && (
-        <CastDetailsContainer
-          stream={"tv"}
-          action={addTvShowCastDetails}
-          title={"Cast and Crew"}
-          id={param}
-        />
-      )}
+      {showCastDetails && <CastDetailsContainer
+        stream={"tv"}
+        action={addTvShowCastDetails}
+        title={"Cast and Crew"}
+        id={param}
+      />}
     </div>
   );
 };

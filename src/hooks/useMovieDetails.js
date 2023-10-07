@@ -39,6 +39,7 @@ const useMovieDetails = (stream,action,id) => {
     const titleLogo = await getMovieLogo(); 
     dispatch(
       action({
+        stream: "movie",
         id:id,
         title: title,
         logo:titleLogo,
@@ -63,6 +64,7 @@ const useMovieDetails = (stream,action,id) => {
     const titleLogo = await getMovieLogo(); 
     dispatch(
       action({
+        stream:"tvshow",
         id:id,
         title: name,
         logo:titleLogo,
