@@ -21,7 +21,7 @@ const SearchCard = ({ item }) => {
 
   return (
     <div
-      className="flex justify-center items-center w-[60%] h-56 rounded-lg bg-slate-200 text-black mb-4 ml-[20%] p-2 hover:cursor-pointer"
+      className="flex justify-center items-center w-[60%] xl:h-44 lg:h-44 md:h-40 h-32 rounded-lg bg-slate-200 text-black mb-4 ml-[20%] p-2 hover:cursor-pointer"
       onClick={() => handleClick(id)}
     >
       <img className="xl:w-[25%] lg:w-[40%] md:w-[45%] sm:w-[45%] w-[50%] xl:h-32 lg:h-32 md:h-32 sm:h-20 h-20 p-2 pr-6" src={IMAGE_CDN_URL + backdrop_path} />

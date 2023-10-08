@@ -10,11 +10,11 @@ const WatchlistCard = ({ item }) => {
 
   return (
       <div
-        className="flex justify-center items-center w-full h-44 mt-6 rounded-lg bg-slate-200 text-black hover:cursor-pointer"
+        className="flex justify-center items-center w-full xl:h-44 lg:h-44 md:h-40 h-32 mt-6 rounded-lg bg-slate-200 text-black hover:cursor-pointer"
         onClick={() => navigate(`/${stream}/${id}`)}
       >
         <img
-          className="w-[25%] xl:h-32 lg:h-32 md:h-32 sm:h-28 h-28 pr-6"
+          className="xl:w-[25%] lg:w-[40%] md:w-[45%] sm:w-[45%] w-[50%] xl:h-32 lg:h-32 md:h-32 sm:h-20 h-20 p-2 pr-6"
           src={IMAGE_CDN_URL + backdrop_path}
         />
         <div className=" w-[70%]">
