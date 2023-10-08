@@ -27,7 +27,7 @@ const TvShowTrailer = ({ message,tvShowId }) => {
     <div>
       <SideBar showMovies={true} ShowTv={true} />
       {playVideo ? (
-        <div className="absolute h-screen aspect-video">
+        <div className="absolute h-screen w-full aspect-video bg-gray-600">
           <iframe
             className="w-[100%] h-screen transform scale-150 fixed"
             src={

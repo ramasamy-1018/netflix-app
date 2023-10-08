@@ -34,7 +34,7 @@ const WatchListConntainer = () => {
         </div>
       ) : (
         <>
-          <h1 className="text-2xl font-sans font-bold flex justify-center items-center pt-72">
+          <h1 className="text-2xl font-sans font-bold flex justify-center items-center pt-80">
             Your Watchlist is empty
           </h1>
         </>
