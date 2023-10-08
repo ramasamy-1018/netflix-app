@@ -38,9 +38,9 @@ const TvShowTrailer = ({ message,tvShowId }) => {
           ></iframe>
         </div>
       ) : (
-        <div className="absolute h-screen w-screen">
+        <div className="absolute h-screen w-full">
           <img
-            className="w-[100%] h-[100%]"
+            className="w-full h-[100%]"
             src={IMAGE_CDN_URL + showTitle.backdrop_path}
           />
         </div>

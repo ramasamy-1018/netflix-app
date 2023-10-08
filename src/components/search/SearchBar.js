@@ -24,11 +24,11 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex items-center justify-center pt-10 ml-16">
+    <div className="flex items-center justify-center pt-6 ml-16">
       <div className="relative">
         <input
           type="text"
-          className="border-2 border-gray-300 bg-white text-black w-80 h-10 px-5 pr-10 rounded-full text-lg"
+          className="border-2 border-gray-300 bg-white text-black xl:w-80 lg:w-80 md:w-76 sm:w-76 w-60 h-10 px-5 pr-10 rounded-full text-lg"
           placeholder="Search for movies, tv shows"
           ref={searchText} />
         <button
