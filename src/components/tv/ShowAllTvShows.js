@@ -15,7 +15,7 @@ const ShowAllTvShows = () => {
   useEffect(() => {
     setTimeout(() => {
       setContentLoaded(true);
-    }, 1000);
+    }, 2000);
   }, []);
 
   if(!contentLoaded) return (<Shimmer />)
@@ -23,7 +23,7 @@ const ShowAllTvShows = () => {
   return (
     <div>
       <TvShowTrailerContainer />
-      {showCastDetails &&<TvShowSecondaryContainer />}
+      {showCastDetails && <TvShowSecondaryContainer />}
 
     </div>
   );

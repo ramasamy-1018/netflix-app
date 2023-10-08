@@ -24,7 +24,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex items-center justify-center pt-10 ml-20">
+    <div className="flex items-center justify-center pt-10 ml-16">
       <div className="relative">
         <input
           type="text"

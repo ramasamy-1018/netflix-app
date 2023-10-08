@@ -31,7 +31,7 @@ const SearchResponseContainer = () => {
     );
 
   return (
-    <div>
+    <div className="ml-12">
         <h1 className="relative ml-[20%] mt-10 text-xl font-semibold">
           Your Search Results
         </h1>

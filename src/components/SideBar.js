@@ -32,7 +32,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
 
   return (
     <div className="absolute z-10">
-      <div className="fixed 2xl:w-40 xl:w-36 lg:w-32 w-28 h-screen text-white text-sm font-light">
+      <div className="fixed 2xl:w-36 xl:w-36 lg:w-32 w-28 h-screen text-white text-sm font-light">
         <div className="h-1/4 flex flex-col items-center ">
           <img
             className="2xl:w-28 2xl:h-20 xl:w-28 xl:h-20 lg:w-28 lg:h-20 w-20 h-16 pt-3 scale-110"
