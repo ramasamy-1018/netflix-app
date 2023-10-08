@@ -21,7 +21,7 @@ const CastDetailsContainer = ({ stream, action, title, id }) => {
 
   return (
     <div className="absolute overflow-hidden top-full w-[100%] text-white">
-      <div className="pl-[10.5%] pt-4 bg-black">
+      <div className="pl-36 pt-4 bg-black">
         <h1 className="text-xl font-sans font-bold">{title}</h1>
         <div className="mt-5 flex overflow-y-scroll w-[100%] no-scrollbar">
           <div className="flex">

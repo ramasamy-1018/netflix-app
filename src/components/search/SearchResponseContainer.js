@@ -18,7 +18,7 @@ const SearchResponseContainer = () => {
 
   if (!searchResult)
     return (
-      <div>
+      <div className="ml-12">
         <h1 className="relative ml-[20%] mt-10 text-xl font-semibold">
           Popular Searches
         </h1>

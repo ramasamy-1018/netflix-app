@@ -10,7 +10,7 @@ const TvShowSecondaryContainer = () => {
   
   return (
     <div className='absolute overflow-hidden top-full w-[100%] text-white'>
-    <div className='pl-[10.5%] pt-1 bg-black'>
+    <div className='pl-36 pt-1 bg-black'>
         <TvShowListContainer title={"Top Rated Tv Shows"} tvShows = {tvShows.topRatedTvShows} />
         <TvShowListContainer title={"English Tv Shows"} tvShows = {tvShows.englishTvShows} />
         <TvShowListContainer title={"Tamil Tv Shows"} tvShows = {tvShows.tamilTvShows} />

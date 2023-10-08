@@ -14,31 +14,33 @@ const WatchListConntainer = () => {
   };
 
   return (
-    <div className="fixed overflow-y-scroll w-screen h-screen px-40 py-10">
-      {watchlist.length ? (
-        <div>
-          <div className="flex ml-32 items-center">
-            <h1 className="text-xl font-sans font-bold">Your Watchlist</h1>
-            <button
-              className="text-md font-sans font-bold w-30 h-12 ml-[65%] p-2 bg-gray-500 rounded-lg"
-              onClick={handleClear}
-            >
-              Clear Watchlist
-            </button>
-          </div>
-          <div className="flex flex-col">
-            {watchlist.map((item) => (
-              <WatchlistCard key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <>
-          <h1 className="text-2xl font-sans font-bold flex justify-center items-center pt-80">
-            Your Watchlist is empty
-          </h1>
-        </>
-      )}
+    <div className="fixed w-full h-screen overflow-y-scroll no-scrollbar pl-44 pt-10 text-white bg-black">
+      <div className="m-auto flex flex-col items-center h-screen pr-20">
+        {watchlist.length ? (
+          <div>
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl font-sans font-bold">Your Watchlist</h1>
+              <button
+                className="text-md font-sans font-bold w-30 h-12 p-2 bg-gray-500 rounded-lg"
+                onClick={handleClear}
+              >
+                Clear Watchlist
+              </button>
+            </div>
+              <div className="flex flex-col">
+                {watchlist.map((item) => (
+                  <WatchlistCard key={item.id} item={item} />
+                ))}
+              </div>
+            </div>
+        ) : (
+          <>
+            <h1 className="text-2xl font-sans font-bold pt-72 pr-40">
+              Your Watchlist is empty
+            </h1>
+          </>
+        )}
+      </div>
     </div>
   );
 };

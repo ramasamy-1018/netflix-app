@@ -35,7 +35,7 @@ const MovieTitle = ({showTitle}) => {
 
   return (
     <div className="absolute w-[100%] text-white flex flex-col bg-gradient-to-r from-black bg-opacity-60 justify-center">
-      <div className="relative left-20 w-[34%] h-screen flex justify-center flex-col animated-scale">
+      <div className="relative xl:w-[30%] lg:w-[34%] md:w-[40%] sm:w-[55%] w-[65%] left-20 h-screen flex justify-center flex-col animated-scale">
         {showTitle.logo ? (
           <img className="h-24" src={IMAGE_CDN_URL + showTitle?.logo} />
         ) : (
@@ -44,7 +44,7 @@ const MovieTitle = ({showTitle}) => {
         <h1 className="text-2xl font-extrabold pt-5">
           {showTitle?.releaseYear} • {showTitle?.runtime}{" "}
         </h1>
-        <h2 className="text-lg font-medium pt-7 inline-block">
+        <h2 className="text-lg font-medium pt-7 hidden md:block sm:block">
         {showTitle?.overview?.split(".")[0]}.{showTitle?.overview.split(".")[1]}.{showTitle?.overview?.split(".")[2]}.{showTitle?.overview.split(".")[3]}.
         </h2>
         <h2 className="text-2xl font-extrabold pt-7">

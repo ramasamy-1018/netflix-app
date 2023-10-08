@@ -32,10 +32,10 @@ const SideBar = ({ showMovies, ShowTv }) => {
 
   return (
     <div className="absolute z-10">
-      <div className="fixed w-40 h-screen text-white text-sm font-light ">
+      <div className="fixed 2xl:w-40 xl:w-36 lg:w-32 w-28 h-screen text-white text-sm font-light">
         <div className="h-1/4 flex flex-col items-center ">
           <img
-            className="w-28 h-20 pt-3 scale-110"
+            className="2xl:w-28 2xl:h-20 xl:w-28 xl:h-20 lg:w-28 lg:h-20 w-20 h-16 pt-3 scale-110"
             src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
           />
         </div>
