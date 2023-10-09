@@ -1,16 +1,27 @@
 import React from "react";
 import { IMAGE_CDN_URL } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { IonIcon } from "@ionic/react";
+import { closeOutline } from "ionicons/icons";
+import { useDispatch } from "react-redux";
+import { removeFromWatchList } from "../../store/watchlistSlice";
 
 const WatchlistCard = ({ item }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   if (!item) return null;
   const { id, backdrop_path, releaseYear, genres, overview, title, stream } =
     item;
 
+  const handleClick = () => {
+    dispatch(removeFromWatchList(id));
+  };
+
   return (
+    <div className="flex items-center w-full bg-slate-200 xl:h-44 lg:h-44 md:h-40 h-32 mt-6 rounded-lg text-black hover:bg-slate-300 hover:cursor-pointer">
       <div
-        className="flex justify-center items-center w-full xl:h-44 lg:h-44 md:h-40 h-32 mt-6 rounded-lg bg-slate-200 text-black hover:cursor-pointer"
+        className="flex justify-center items-center w-[95%]"
         onClick={() => navigate(`/${stream}/${id}`)}
       >
         <img
@@ -27,6 +38,13 @@ const WatchlistCard = ({ item }) => {
           <p className="text-md font-bold">{genres.join(" | ")}</p>
         </div>
       </div>
+      <IonIcon
+        className="w-[5%] h-6 hover:cursor-pointer hover:scale-105"
+        s
+        onClick={handleClick}
+        icon={closeOutline}
+      />
+    </div>
   );
 };
 

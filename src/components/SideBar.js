@@ -13,10 +13,12 @@ import {
   albumsSharp,
 } from "ionicons/icons";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 
 const SideBar = ({ showMovies, ShowTv }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname)
 
   const handleMouseEnter = (event, sharpIcon) => {
     event.currentTarget
@@ -35,13 +37,14 @@ const SideBar = ({ showMovies, ShowTv }) => {
       <div className="fixed 2xl:w-36 xl:w-36 lg:w-32 w-28 h-screen text-white text-sm font-light">
         <div className="h-1/4 flex flex-col items-center ">
           <img
-            className="2xl:w-28 2xl:h-20 xl:w-28 xl:h-20 lg:w-28 lg:h-20 w-20 h-16 pt-3 scale-110"
+            className="2xl:w-28 2xl:h-20 xl:w-28 xl:h-20 lg:w-28 lg:h-20 w-20 h-16 pt-3 scale-110 hover:cursor-pointer"
+            onClick={() => location.pathname !== "/movie" ?navigate("/movie"): null}
             src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
           />
         </div>
-        <div className="h-2/4 flex flex-col items-center justify-evenly mt-5 hover:cursor-pointer">
+        <div className="h-2/4 flex flex-col items-center justify-evenly mt-5">
           <div
-            className="flex flex-col items-center group"
+            className="flex flex-col items-center group hover:cursor-pointer"
             onMouseEnter={(e) => handleMouseEnter(e, peopleSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, peopleOutline)}
             onClick={() => navigate("/")}
@@ -54,7 +57,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
           </div>
 
           <div
-            className="flex flex-col items-center group"
+            className="flex flex-col items-center group hover:cursor-pointer"
             onMouseEnter={(e) => handleMouseEnter(e, searchSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, searchOutline)}
             onClick={() => navigate("/search")}
@@ -68,7 +71,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
 
           {showMovies && (
             <div
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group hover:cursor-pointer"
               onMouseEnter={(e) => handleMouseEnter(e, filmSharp)}
               onMouseLeave={(e) => handleMouseLeave(e, filmOutline)}
               onClick={() => navigate("/movie")}
@@ -81,7 +84,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
           )}
           {ShowTv && (
             <div
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group hover:cursor-pointer"
               onMouseEnter={(e) => handleMouseEnter(e, tvSharp)}
               onMouseLeave={(e) => handleMouseLeave(e, tvOutline)}
               onClick={() => navigate("/tvshow")}
@@ -94,7 +97,7 @@ const SideBar = ({ showMovies, ShowTv }) => {
             </div>
           )}
           <div
-            className="flex flex-col items-center group"
+            className="flex flex-col items-center group hover:cursor-pointer"
             onMouseEnter={(e) => handleMouseEnter(e, albumsSharp)}
             onMouseLeave={(e) => handleMouseLeave(e, albumsOutline)}
             onClick={() => navigate("/watchlist")}

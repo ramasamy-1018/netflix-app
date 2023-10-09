@@ -7,24 +7,18 @@ import {
 import MovieTrailer from "./MovieTrailer";
 import CastDetailsContainer from "../castdetails/CastDetailsContainer";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import Shimmer from "../../utils/Shimmer";
+import { useEffect } from "react";
 
 const SelectedMovie = () => {
   const dispatch = useDispatch();
-  const [contentLoaded, setContentLoaded] = useState(false);
   const { param } = useParams();
 
   useEffect(() => {
-    setTimeout(() => {
-      setContentLoaded(true);
-    }, 2000);
+    window.scrollTo(0, 0);
     return () => {
       dispatch(removeMovieCastDetails());
     };
   }, []);
-
-  if (!contentLoaded) return <Shimmer />;
 
   return (
     <div>

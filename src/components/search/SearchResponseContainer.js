@@ -32,7 +32,7 @@ const SearchResponseContainer = () => {
 
   return (
     <div className="ml-12">
-        <h1 className="relative ml-[20%] mt-10 text-xl font-semibold">
+        <h1 className="relative ml-[20%] mt-10 text-xl font-semibold pl-2">
           Your Search Results
         </h1>
         <div className="fixed overflow-y-scroll no-scrollbar w-full h-full mt-4 flex flex-col">

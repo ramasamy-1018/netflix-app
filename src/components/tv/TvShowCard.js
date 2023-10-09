@@ -14,7 +14,7 @@ const TvShowCard = ({tvShowId,poster}) => {
 
   return (
     <div className="w-44 mr-3 overflow-hidden" onClick={() => handleClick(tvShowId)}>
-      <img className="hover:scale-105" src={IMAGE_CDN_URL + poster} />
+      <img className="hover:scale-105 hover:cursor-pointer" src={IMAGE_CDN_URL + poster} />
     </div>
   );
 };

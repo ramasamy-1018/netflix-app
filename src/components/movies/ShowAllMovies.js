@@ -1,21 +1,16 @@
 import MovieSecondaryContainer from "./MovieSecondaryContainer";
 import MovieTrailerContainer from "./MovieTrailerContainer";
-import { useEffect, useState } from "react";
-import Shimmer from "../../utils/Shimmer";
+import { useEffect } from "react";
 import useAddMoviesToStore from "../../hooks/useAddMoviesToStore"
 
 const ShowAllMovies = () => {
 
-  const [contentLoaded, setContentLoaded] = useState(false);
   useAddMoviesToStore();
 
   useEffect(() => {
-    setTimeout(() => {
-      setContentLoaded(true);
-    }, 2000);
+    window.scrollTo(0, 0);
   }, []);
 
-  if(!contentLoaded) return (<Shimmer />)
 
   return (
     <div>
