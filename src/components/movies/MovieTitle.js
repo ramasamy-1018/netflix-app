@@ -33,7 +33,7 @@ const MovieTitle = ({showTitle}) => {
   };
 
   return (
-    <div className="absolute w-[100%] text-white flex flex-col bg-gradient-to-r from-black bg-opacity-60 justify-center">
+    <div className="absolute w-[100%] text-white flex flex-col justify-center">
       <div className="relative xl:w-[30%] lg:w-[34%] md:w-[44%] sm:w-[55%] w-[70%] left-20 h-screen flex justify-center flex-col animated-scale">
         {showTitle.logo ? (
           <img className="w-32 h-20 xl:h-24 xl:w-60" src={IMAGE_CDN_URL + showTitle?.logo} />

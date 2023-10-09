@@ -10,7 +10,7 @@ const TvShowTrailerContainer = () => {
 
     return(
         <div >
-            <TvShowTrailer message={"MainVideo"} action = {addMainTvShowVideoTrailer} tvShowId = {topRatedTvShows[0]?.id} />
+            <TvShowTrailer message={"MainVideo"} action = {addMainTvShowVideoTrailer} tvShowId = {topRatedTvShows[1]?.id} />
         </div>
     )
 }

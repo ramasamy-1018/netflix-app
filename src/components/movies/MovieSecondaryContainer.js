@@ -11,10 +11,10 @@ const MovieSecondaryContainer = () => {
   return (
     <div className='absolute overflow-hidden top-full w-[100%] text-white'>
     <div className='pl-36 pt-1 bg-black'>
-        <MovieListContainer title={"Now Playing"} movies = {movies.nowPlayingMovies} />
-        <MovieListContainer title={"Popular"} movies = {movies.popularMovies} />
-        <MovieListContainer title={"Top Rated"} movies = {movies.topRatedMovies} />
-        <MovieListContainer title={"Upcoming"} movies = {movies.upcomingMovies} />
+        <MovieListContainer title={"Now Playing Movies"} movies = {movies.nowPlayingMovies} />
+        <MovieListContainer title={"Popular Movies"} movies = {movies.popularMovies} />
+        <MovieListContainer title={"Top Rated Movies"} movies = {movies.topRatedMovies} />
+        <MovieListContainer title={"Upcoming Movies"} movies = {movies.upcomingMovies} />
         <MovieListContainer title={"Tamil Movies"} movies = {movies.tamilMovies} />
         <MovieListContainer title={"Telugu Movies"} movies = {movies.teluguMovies} />
         <MovieListContainer title={"Hindi Movies"} movies = {movies.hindiMovies} />
