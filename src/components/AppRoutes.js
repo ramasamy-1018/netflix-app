@@ -1,17 +1,23 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
-import ShowAllMovies from "./movies/ShowAllMovies"
-import SelectedMovie from "./movies/SelectedMovie";
-import ShowAllTvShows from "./tv/ShowAllTvShows"
-import SelectedTvShow from "./tv/SelectedTvShow";
+import ShowAllMovies from "./movies/ShowAllMovies";
 import WatchListPage from "./watchlist/WatchListPage";
 import SearchPage from "./search/SearchPage";
 import Profile from "./Profile";
+import Shimmer from "../utils/Shimmer";
+import ErrorPage from "./ErrorPage";
+
+const SelectedMovie = lazy(() => import("./movies/SelectedMovie"));
+const ShowAllTvShows = lazy(() => import("./tv/ShowAllTvShows"));
+const SelectedTvShow = lazy(() => import("./tv/SelectedTvShow"));
+
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Profile/>,
+    element: <Profile />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/movie",
@@ -19,15 +25,27 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/movie/:param",
-    element: <SelectedMovie />,
+    element: (
+      <Suspense fallback={<Shimmer />}>
+        <SelectedMovie />
+      </Suspense>
+    ),
   },
   {
     path: "/tvshow",
-    element: <ShowAllTvShows />,
+    element: (
+      <Suspense fallback={<Shimmer />}>
+        <ShowAllTvShows />
+      </Suspense>
+    ),
   },
   {
     path: "/tvshow/:param",
-    element: <SelectedTvShow />,
+    element: (
+      <Suspense fallback={<Shimmer />}>
+        <SelectedTvShow />
+      </Suspense>
+    )
   },
   {
     path: "/watchlist",
@@ -39,7 +57,7 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <Profile/>,
+    element: <Profile />,
   },
 ]);
 

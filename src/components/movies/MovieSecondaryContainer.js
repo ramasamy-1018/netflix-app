@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import MovieListContainer from './MovieListContainer';
+import Shimmer from '../../utils/Shimmer';
 
 const MovieSecondaryContainer = () => {
 
   const movies = useSelector((store) => store.movie);
 
-  if(!movies) return null
+  if(!movies) return (<Shimmer />)
   
   return (
     <div className='absolute overflow-hidden top-full w-[100%] text-white'>

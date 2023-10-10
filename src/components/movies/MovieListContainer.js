@@ -1,8 +1,9 @@
 import React from "react";
 import MovieCard from "./MovieCard";
+import Shimmer from "../../utils/Shimmer";
 
 const MovieListContainer = ({ title, movies }) => {
-  if (!movies) return null;
+  if (!movies) return (<Shimmer />);
 
   return (
     <div className="mt-7">

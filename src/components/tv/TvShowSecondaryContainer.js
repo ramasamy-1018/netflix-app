@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import TvShowListContainer from './TvShowListContainer';
+import Shimmer from "../../utils/Shimmer";
 
 const TvShowSecondaryContainer = () => {
 
   const tvShows = useSelector((store) => store.tv);
 
-  if(!tvShows) return null
+  if(!tvShows) return (<Shimmer />)
   
   return (
     <div className='absolute overflow-hidden top-full w-[100%] text-white'>

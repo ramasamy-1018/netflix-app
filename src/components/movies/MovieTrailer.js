@@ -10,9 +10,9 @@ import useGetAllMovieDetails from "../../hooks/useGetAllMovieDetails";
 import MovieTitle from "./MovieTitle";
 import Shimmer from "../../utils/Shimmer";
 
-const MovieTrailer = ({ message,movieId }) => {
+const MovieTrailer = ({ message, movieId }) => {
   const dispatch = useDispatch();
-  const {playVideo,showTitle} = useGetAllMovieDetails(message,movieId)
+  const { playVideo, showTitle } = useGetAllMovieDetails(message, movieId);
 
   useEffect(() => {
     return () => {
@@ -21,13 +21,13 @@ const MovieTrailer = ({ message,movieId }) => {
     };
   }, []);
 
-  if(!playVideo && !showTitle) return (<Shimmer />)
+  if (!playVideo && !showTitle) return <Shimmer />;
 
   return (
     <div>
       <SideBar showMovies={true} ShowTv={true} />
       {playVideo ? (
-        <div className="absolute h-screen w-full aspect-video bg-gray-800">
+        <div className="absolute h-screen w-full aspect-video bg-gray-400">
           <iframe
             className="w-[100%] h-screen transform scale-150 fixed"
             src={
@@ -45,7 +45,7 @@ const MovieTrailer = ({ message,movieId }) => {
           />
         </div>
       )}
-      {showTitle && <MovieTitle showTitle = {showTitle} />}
+      {showTitle && <MovieTitle showTitle={showTitle} />}
     </div>
   );
 };

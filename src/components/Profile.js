@@ -1,6 +1,6 @@
 import React from "react";
-import profile1 from "../assets/images/profile1.png"
-import profile2 from "../assets/images/profile2.png"
+import profile1 from "../assets/images/profile1.jpg"
+import profile2 from "../assets/images/profile2.jpg"
 import profile3 from "../assets/images/profile3.jpg"
 import { useNavigate } from "react-router-dom";
 

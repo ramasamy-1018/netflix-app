@@ -47,8 +47,7 @@ const TvShowTitle = ({ showTitle }) => {
     setShowOverlay(false);
     dispatch(ShowCastDetails(true));
   };
-
-  return (
+  return ( 
     <div className="absolute w-[100%] text-white flex flex-col bg-opacity-30 justify-center">
       <div className="relative xl:w-[30%] lg:w-[34%] md:w-[44%] sm:w-[55%] w-[70%] left-20 h-screen flex justify-center flex-col animated-scale">
         {showTitle.logo ? (

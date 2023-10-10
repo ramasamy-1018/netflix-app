@@ -18,7 +18,6 @@ import { useNavigate,useLocation } from "react-router-dom";
 const SideBar = ({ showMovies, ShowTv }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname)
 
   const handleMouseEnter = (event, sharpIcon) => {
     event.currentTarget

@@ -1,16 +1,16 @@
 import {useSelector} from "react-redux"
 import TvShowTrailer from "./TvShowTrailer";
-import TvShowTitle from "./TvShowTitle";
-import { addMainTvShowVideoDetails, addMainTvShowVideoTrailer } from "../../store/tvSlice";
+import { addMainTvShowVideoTrailer } from "../../store/tvSlice";
+import Shimmer from "../../utils/Shimmer";
 
 const TvShowTrailerContainer = () => {
     
     const topRatedTvShows = useSelector((store) => store.tv.topRatedTvShows)
-    if(!topRatedTvShows) return(null);
+    if(!topRatedTvShows) return(<Shimmer />);
 
     return(
         <div >
-            <TvShowTrailer message={"MainVideo"} action = {addMainTvShowVideoTrailer} tvShowId = {topRatedTvShows[1]?.id} />
+            <TvShowTrailer message={"MainVideo"} action = {addMainTvShowVideoTrailer} tvShowId = {topRatedTvShows[0]?.id} />
         </div>
     )
 }

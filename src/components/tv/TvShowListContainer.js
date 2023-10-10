@@ -1,8 +1,9 @@
 import React from "react";
 import TvShowCard from "./TvShowCard";
+import Shimmer from "../../utils/Shimmer";
 
 const TvShowListContainer = ({ title, tvShows }) => {
-  if (!tvShows) return null;
+  if (!tvShows) return (<Shimmer />);
 
   return (
     <div className="mt-7">
