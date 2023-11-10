@@ -10,7 +10,7 @@ const MovieTrailerContainer = () => {
 
     return(
         <div >
-            <MovieTrailer message={"MainVideo"} action = {addMainMovieVideoTrailer} movieId = {nowPlayingMovies[19]?.id} />
+            <MovieTrailer message={"MainVideo"} action = {addMainMovieVideoTrailer} movieId = {nowPlayingMovies[5]?.id} />
         </div>
     )
 }

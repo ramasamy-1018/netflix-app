@@ -9,10 +9,11 @@ const Profile = () => {
 
   return (
     <div className="bg-black">
-      <img
-        className="2xl:w-28 2xl:h-20 xl:w-28 xl:h-20 lg:w-28 lg:h-20 w-20 h-16 pt-3 pl-4 scale-110"
-        src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
-      />
+      <div className="p-5">
+        <p className="text-red-800 font-extrabold xl:text-2xl lg:text-xl md:text-lg sm:text-md">
+          NETPLAY
+        </p>
+      </div>
       <div className="pt-36 w-full h-screen flex flex-col items-center text-white">
         <h1 className="text-2xl font-semibold text-white">Who is Watching</h1>
         <div className="p-10 flex justify-evenly text-lg font-normal hover:cursor-pointer">

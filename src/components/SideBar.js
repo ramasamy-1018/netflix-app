@@ -34,12 +34,15 @@ const SideBar = ({ showMovies, ShowTv }) => {
   return (
     <div className="absolute z-10">
       <div className="fixed 2xl:w-36 xl:w-36 lg:w-32 w-28 h-screen text-white text-sm font-light bg-gradient-to-b">
-        <div className="h-1/4 flex flex-col items-center ">
-          <img
+        <div className="h-1/4 flex flex-col items-center justify-center">
+          <div className="hover:cursor-pointer" onClick={() => location.pathname !== "/movie" ?navigate("/movie"): null}>
+          <p className="text-red-800 font-extrabold xl:text-2xl lg:text-xl md:text-lg sm:text-md">NETPLAY</p>
+          </div>
+          {/* <img
             className="2xl:w-28 2xl:h-20 xl:w-28 xl:h-20 lg:w-28 lg:h-20 w-20 h-16 pt-3 scale-110 hover:cursor-pointer"
             onClick={() => location.pathname !== "/movie" ?navigate("/movie"): null}
             src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
-          />
+          /> */}
         </div>
         <div className="h-2/4 flex flex-col items-center justify-evenly mt-5">
           <div
