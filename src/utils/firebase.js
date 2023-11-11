@@ -7,13 +7,13 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCQOBtBReWm_b2vAo_27ktz0EDdp84cLig",
-  authDomain: "netplay-video.firebaseapp.com",
-  projectId: "netplay-video",
-  storageBucket: "netplay-video.appspot.com",
-  messagingSenderId: "667347941914",
-  appId: "1:667347941914:web:b0e9f91ee81208e8a22fa3",
-  measurementId: "G-PSN7CR82R2"
+  apiKey: "AIzaSyAd5nzN46ZIBpTwzIXdIOW7QncdmBdW9yU",
+  authDomain: "netplay-ott.firebaseapp.com",
+  projectId: "netplay-ott",
+  storageBucket: "netplay-ott.appspot.com",
+  messagingSenderId: "113451359607",
+  appId: "1:113451359607:web:4b86032477fe476d87d572",
+  measurementId: "G-S14PKERDP2"
 };
 
 // Initialize Firebase
