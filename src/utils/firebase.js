@@ -10,7 +10,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAd5nzN46ZIBpTwzIXdIOW7QncdmBdW9yU",
   authDomain: "netplay-ott.firebaseapp.com",
   projectId: "netplay-ott",
-  storageBucket: "netplay-ott.appspot.com",
+  storageBucket: "netplay-ott.firebasestorage.app",
   messagingSenderId: "113451359607",
   appId: "1:113451359607:web:4b86032477fe476d87d572",
   measurementId: "G-S14PKERDP2"
